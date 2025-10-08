@@ -1,0 +1,123 @@
+/*===========================================*/
+/* Custom Variables */
+/*===========================================*/
+:root {
+  --cd-primary-color: #2661e9;
+  --cd-secondary-color: #262c48;
+  --cd-tertiary-color: #728193;
+  --section-bg-light: #f8faff;
+  --section-bg-dark: #050c21;
+}
+
+/*--------------------------*/
+/* Text Color */
+/*--------------------------*/
+.list-style-1 li i,
+.career .career-info p a,
+.team .team-social a,
+blockquote cite,
+.privacy-policy a,
+.car-item .car-content a,
+.error-page .error-content p a,
+.blog .entry-meta ul li a i,
+.blog .entry-meta ul li a:hover,
+.blog-sidebar .widget-link ul li a:hover,
+.blog .entry-title a:hover,
+.navigation-previous:hover span,
+.testimonial-1 .testimonial-block .testimonial-avtar h6,
+.accordion .accordion-header .accordion-button.collapsed:hover,
+.accordion .accordion-header .accordion-button.collapsed:hover:after,
+.sorting-options .change-view-button a.active,
+.car-item .car-overlay-banner ul li a:hover,
+.car-details .car-price strong,
+.details-social ul li a:hover {color: var(--cd-primary-color);}
+
+/*--------------------------*/
+/* Background Color */
+/*--------------------------*/
+mark,
+.button,
+.team:hover,
+.team .team-social li a:hover,
+.typography-main h4.title:before,
+.blog .entry-share .share a,
+.accordion .accordion-header .accordion-button,
+.blog-sidebar .sidebar-widget h6:before,
+.blog-sidebar .sidebar-widget .tags li a:hover,
+.pagination > .active > a, .pagination > .active > a:focus,
+.pagination > .active > a:hover,
+.pagination > .active > span,
+.pagination > .active > span:focus,
+.pagination > .active > span:hover,
+.pagination li a:focus,
+.pagination li a:hover,
+.pagination li span:focus,
+.pagination li span:hover,
+.ui-widget-header,
+.product-listing .listing-sidebar .widget-search ul li span,
+.product-listing .listing-sidebar .widget-search h5:before,
+.details-nav .modal-dialog .form-check.form-check-inline .form-check-input:checked,
+.form-check-input:checked,
+.car-item:hover .separator:after,
+.car-item:hover .separator:before,
+.details-nav ul li a:hover,
+.car-details-sidebar h5:before,
+.feature-box-3:hover .icon i,
+.slider-for .slick-prev:hover,
+.slider-for .slick-prev:focus,
+.slider-for .slick-next:hover,
+.slider-for .slick-next:focus {background-color: var(--cd-primary-color);}
+
+
+.car-item .car-overlay-banner {background: rgba(38, 97, 233,0.7);}
+
+/*--------------------------*/
+/* Border Color */
+/*--------------------------*/
+.gray-form input:focus,
+.gray-form textarea:focus {border-color: var(--cd-primary-color) !important;}
+
+.blog-sidebar .widget-link ul li a:hover,
+.blog-sidebar .widget-search input:focus,
+.blog-sidebar .sidebar-widget .tags li a:hover,
+.accordion .accordion-header .accordion-button,
+.product-listing .price-search input:focus,
+.pagination > .active > a,
+.pagination > .active > a:focus,
+.pagination > .active > a:hover,
+.pagination > .active > span,
+.pagination > .active > span:focus,
+.pagination > .active > span:hover,
+.ui-state-default, .ui-widget-content .ui-state-default,
+.ui-widget-header .ui-state-default, .ui-button,
+html .ui-button.ui-state-disabled:hover,
+html .ui-button.ui-state-disabled:active,
+.details-nav ul li a:hover,
+.feature-box-3:hover .icon,
+.feature-box-3:hover .icon i,
+.slider-for .slick-prev:hover,
+.slider-for .slick-prev:focus,
+.slider-for .slick-next:hover,
+.slider-for .slick-next:focus {border-color: var(--cd-primary-color);}
+
+#tabs ul.nav-tabs li.nav-item .nav-link.active,
+#tabs ul.nav-tabs li.nav-item .nav-link.active:focus,
+#tabs ul.nav-tabs li.nav-item .nav-link:hover {border-bottom-color: var(--cd-primary-color);}
+
+
+/*===========================================*/
+/* Page Header */
+/*===========================================*/
+.inner-intro {height: 430px;}
+
+.electro-page-bg {background-image: url(../images/bg/inner-banner-bg.jpg); background-position: center center; background-attachment: inherit; background-size: cover;
+    background-repeat: no-repeat; position: relative; z-index: 0;}
+.electro-page-bg::before {background-color: rgba(5,12,33,0.5);}
+
+/*===========================================*/
+/* Info Section on About */
+/*===========================================*/
+.bg-gradient-grey {background: rgb(255,255,255);  background: linear-gradient(180deg, rgba(255,255,255,1) 0%, #f8faff 100%);}
+.why-choose-services_section:before {background-image: url(../images/bg/about-bg.jpg);}
+
+
