@@ -1,0 +1,118 @@
+.multiStep-FormSection {
+   display: flex;
+   flex-direction: row;
+}
+
+.multiStep-Form {
+    margin-top: 100px;
+}
+
+.form-Label{
+    color: white
+}
+
+
+
+/* Progress Bar */
+.progress-container {
+  position: relative;
+  height: 10px;
+  background: #ddd;
+  margin-bottom: 40px;
+  /* width: 80%; */
+}
+
+.progress-bar {
+  position: absolute;
+  height: 100%;
+  width: 75%;
+  background: var(--button-bg-dark);
+  /* transition: width 0.4s ease; */
+}
+
+.button-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.button-container button{border: 0;}
+
+.car-directory-banner .continueButton {
+    background: var(--button-bg-dark)!important;}
+
+.form-Container{
+    padding: 10px;
+    margin-right: 40px;
+    border:black;
+    border-width: 4;
+    text-align: center;
+    
+}
+
+.form-Container h6{
+    color: white;
+}
+
+.form-Container label{
+    color:#ddd;
+}
+
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns on large screens */
+  grid-gap: 2px; /* 1px space between divs */
+  border-radius: 15px;
+  overflow: hidden; /* keeps the rounded corners clean */
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+@media (max-width: 768px) {
+    .card-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.card-grid > div {
+   background: #e9ecef;
+   height: 130px;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   align-items: center;
+   font-weight: bold;
+   color: #222;
+   border: 1px solid var(--cd-tertiary-color);
+   padding: 5px;
+}
+
+.card-grid  h6 {
+   height: 20%;
+   font-weight: bold;
+   color: #222;
+}
+
+.card-grid img{
+    height: 70%;
+    object-fit: contain;
+}
+
+
+.progress-steps {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  top: -25px;
+}
+
+.time-step {
+  font-size: 0.85em;
+  color: #666;
+}
+
+.time-step.active {
+  color: #4CAF50;
+  font-weight: 600;
+}

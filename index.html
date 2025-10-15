@@ -48,6 +48,9 @@
   <!-- responsive -->
   <link rel="stylesheet" type="text/css" href="css/responsive.css" />
 
+  <!-- MultiStep-Form -->
+  <link rel="stylesheet" type="text/css" href="css/multiStep-Form.css" />
+
 </head>
 
 <body>
@@ -363,269 +366,75 @@
 
   <!--=================================
   Car Directory Search Tab -->
-  <section class="theme-bg car-directory-section">
+  <section class="theme-bg ">
     <div class="section-overlay" data-overlay-opacity="1" style="background-image: url(images/modern-home/bg/section-bg-pattern-2.png); background-position: center; background-repeat: no-repeat; background-size: cover;"></div>
       <div class="container">
         <div class="row">
-          <div class="col-md-12">
-            <div class="car-directory-banner car-directory-banner-new widget-light">              
-              <div class="search-tab">
-                <div id="search-tabs">
-                  <div class="tabs-header">
-                    <h6>I want to Buy </h6>
-                    <ul class="nav nav-tabs text-start" id="myTab01" role="tablist">
-                      <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="all-cars-tab" data-bs-toggle="tab" data-bs-target="#all-cars" type="button" role="tab" aria-controls="all-cars" aria-selected="true">All vehicles</button>
-                      </li>
-                      <li class="nav-item" role="presentation">
-                        <button class="nav-link " id="certified-tab" data-bs-toggle="tab" data-bs-target="#certified" type="button" role="tab" aria-controls="certified" aria-selected="false">Certified</button>
-                      </li>
-                      <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="new-cars-tab" data-bs-toggle="tab" data-bs-target="#new-cars" type="button" role="tab" aria-controls="new-cars" aria-selected="false">New</button>
-                      </li>
-                      <li class="nav-item" role="presentation">
-                        <button class="nav-link " id="used-cars-tab" data-bs-toggle="tab" data-bs-target="#used-cars" type="button" role="tab" aria-controls="used-cars" aria-selected="false">Used</button>
-                      </li>
-                    </ul>
-                    <div class="car-total float-end">
-                      <h5 class="car-total-text"><i class="fa fa-caret-right"></i>(50) <span>Vehicles</span></h5>
+          <div class="col-md-7">
+            <div class="car-directory-banner ">
+              <div class="form-Container">
+                <h6> Get Pre-Approved for the Car You Want at a Price You Can Afford</h6>
+                <label> What type of vehicle are you looking for?</label>
+                <div class=" img-Container mt-4">
+                   <div class="card-grid">
+                    <div class="div1">
+                      <img src="/images/car/01.jpg" alt="">
+                      <h6>Car 1</h6>
                     </div>
+
+                    <div class="div2">
+                      <img src="/images/car/01.jpg" alt="">
+                      <h6>Car 2</h6>
+                    </div>
+
+                    <div class="div3">
+                      <img src="/images/car/01.jpg" alt="">
+                      <h6>Car 3</h6>
+                    </div>
+
+                    <div class="div4">
+                      <img src="/images/car/01.jpg" alt="">
+                      <h6>Car 4</h6>
+                    </div>
+
+                    <div class="div5">
+                      <img src="/images/car/01.jpg" alt="">
+                      <h6>Car 5</h6>
+                    </div>
+
+                    <div class="div6">
+                      <img src="/images/car/01.jpg" alt="">
+                      <h6>Car 6</h6>
+                    </div>
+
                   </div>
-  
-                  <div class="tab-content" id="myTabContent02">
-                    <div class="tab-pane fade show active" id="all-cars" role="tabpanel" aria-labelledby="all-cars-tab">
-                      <div class="row">
-                        <div class="col-xl-10 col-lg-9 col-md-12">
-                          <div class="row">
-                            <div class="col-xl-2 col-lg-3 col-md-6">
-                              <div class="selected-box">
-                                <select class="selectpicker">
-                                  <option>Make </option>
-                                  <option>BMW</option>
-                                  <option>Honda </option>
-                                  <option>Hyundai </option>
-                                  <option>Nissan </option>
-                                  <option>Mercedes Benz </option>
-                                </select>
-                              </div>
-                            </div>
-                            <div class="col-xl-2 col-lg-3 col-md-6">
-                              <div class="selected-box">
-                                <select class="selectpicker">
-                                  <option>Model</option>
-                                  <option>3-Series</option>
-                                  <option>Carrera</option>
-                                  <option>GT-R</option>
-                                  <option>Cayenne</option>
-                                  <option>Mazda6</option>
-                                  <option>Macan</option>
-                                </select>
-                              </div>
-                            </div>
-                            <div class="col-xl-2 col-lg-3 col-md-6">
-                              <div class="selected-box">
-                                <select class="selectpicker">
-                                  <option>Price </option>
-                                  <option>$5,000</option>
-                                  <option>$10,000</option>
-                                  <option>$15,000</option>
-                                  <option>$20,000</option>
-                                  <option>$25,000</option>
-                                  <option>$30,000</option>
-                                  <option>$35,000</option>
-                                </select>
-                              </div>
-                            </div>
-                            <div class="col-xl-6 col-lg-3 col-md-6">
-                              <div class="form-group">
-                                <input id="name01" type="text" placeholder="Location*" class="form-control placeholder" name="name">
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-xl-2 col-lg-3 col-md-12">
-                          <div class="d-grid">
-                            <button class="button red" type="button">Search Inventory</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="tab-pane fade" id="certified" role="tabpanel" aria-labelledby="certified-tab">
-                      <div class="row">
-                        <div class="col-xl-10 col-lg-9 col-md-12">
-                          <div class="row">
-                            <div class="col-xl-2 col-lg-3 col-md-6">
-                              <div class="selected-box">
-                                <select class="selectpicker">
-                                  <option>Make </option>
-                                  <option>BMW</option>
-                                  <option>Honda </option>
-                                  <option>Hyundai </option>
-                                  <option>Nissan </option>
-                                  <option>Mercedes Benz </option>
-                                </select>
-                              </div>
-                            </div>
-                            <div class="col-xl-2 col-lg-3 col-md-6">
-                              <div class="selected-box">
-                                <select class="selectpicker">
-                                  <option>Model</option>
-                                  <option>3-Series</option>
-                                  <option>Carrera</option>
-                                  <option>GT-R</option>
-                                  <option>Cayenne</option>
-                                  <option>Mazda6</option>
-                                  <option>Macan</option>
-                                </select>
-                              </div>
-                            </div>
-                            <div class="col-xl-2 col-lg-3 col-md-6">
-                              <div class="selected-box">
-                                <select class="selectpicker">
-                                  <option>Price </option>
-                                  <option>2010</option>
-                                  <option>2011</option>
-                                  <option>2012</option>
-                                  <option>2013</option>
-                                  <option>2014</option>
-                                  <option>2015</option>
-                                  <option>2016</option>
-                                </select>
-                              </div>
-                            </div>
-                            <div class="col-xl-6 col-lg-3 col-md-6">
-                              <div class="form-group">
-                                <input id="name04" type="text" placeholder="Location*" class="form-control placeholder" name="name">
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-xl-2 col-lg-3 col-md-12">
-                          <div class="d-grid">
-                            <button class="button red" type="button">Search Inventory</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="tab-pane fade" id="new-cars" role="tabpanel" aria-labelledby="new-cars-tab">
-                      <div class="row">
-                        <div class="col-xl-10 col-lg-9 col-md-12">
-                          <div class="row">
-                            <div class="col-xl-2 col-lg-3 col-md-6">
-                              <div class="selected-box">
-                                <select class="selectpicker">
-                                <option>Make </option>
-                                <option>BMW</option>
-                                <option>Honda </option>
-                                <option>Hyundai </option>
-                                <option>Nissan </option>
-                                <option>Mercedes Benz </option>
-                               </select>
-                              </div>
-                            </div>
-                            <div class="col-xl-2 col-lg-3 col-md-6">
-                              <div class="selected-box">
-                                <select class="selectpicker">
-                                  <option>Model</option>
-                                  <option>3-Series</option>
-                                  <option>Carrera</option>
-                                  <option>GT-R</option>
-                                  <option>Cayenne</option>
-                                  <option>Mazda6</option>
-                                  <option>Macan</option>
-                                </select>
-                              </div>
-                            </div>
-                            <div class="col-xl-2 col-lg-3 col-md-6">
-                              <div class="selected-box">
-                                <select class="selectpicker">
-                                  <option>Price </option>
-                                  <option>$5,000</option>
-                                  <option>$10,000</option>
-                                  <option>$15,000</option>
-                                  <option>$20,000</option>
-                                  <option>$25,000</option>
-                                  <option>$30,000</option>
-                                  <option>$35,000</option>
-                                </select>
-                              </div>
-                            </div>
-                            <div class="col-xl-6 col-lg-3 col-md-6">
-                              <div class="form-group">
-                                <input id="name02" type="text" placeholder="Location*" class="form-control placeholder" name="name">
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-xl-2 col-lg-3 col-md-12">
-                          <div class="d-grid">
-                            <button class="button red" type="button">Search Inventory</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="tab-pane fade" id="used-cars" role="tabpanel" aria-labelledby="used-cars-tab">
-                      <div class="row">
-                        <div class="col-xl-10 col-lg-9 col-md-12">
-                          <div class="row">
-                            <div class="col-xl-2 col-lg-3 col-md-6">
-                              <div class="selected-box">
-                                <select class="selectpicker">
-                                  <option>Make </option>
-                                  <option>BMW</option>
-                                  <option>Honda </option>
-                                  <option>Hyundai </option>
-                                  <option>Nissan </option>
-                                  <option>Mercedes Benz </option>
-                                </select>
-                              </div>
-                            </div>
-                            <div class="col-xl-2 col-lg-3 col-md-6">
-                              <div class="selected-box">
-                                <select class="selectpicker">
-                                  <option>Model</option>
-                                  <option>3-Series</option>
-                                  <option>Carrera</option>
-                                  <option>GT-R</option>
-                                  <option>Cayenne</option>
-                                  <option>Mazda6</option>
-                                  <option>Macan</option>
-                                </select>
-                              </div>
-                            </div>
-                            <div class="col-xl-2 col-lg-3 col-md-6">
-                              <div class="selected-box">
-                                <select class="selectpicker">
-                                  <option>Price </option>
-                                  <option>$5,000</option>
-                                  <option>$10,000</option>
-                                  <option>$15,000</option>
-                                  <option>$20,000</option>
-                                  <option>$25,000</option>
-                                  <option>$30,000</option>
-                                  <option>$35,000</option>
-                                </select>
-                              </div>
-                            </div>
-                            <div class="col-xl-6 col-lg-3 col-md-6">
-                              <div class="form-group">
-                                <input id="name03" type="text" placeholder="Location*" class="form-control placeholder" name="name">
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-xl-2 col-lg-3 col-md-12">
-                          <div class="d-grid">
-                            <button class="button red" type="button">Search Inventory</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    
+                </div>          
+              </div>          
+            </div>             
+          </div>
+
+
+          <div class="col-md-5">
+            <div class=" car-directory-banner text-Container">
+              <label class="form-Label">3 minutes from finish</label> 
+
+              <!-- Progress Bar -->
+              <div class="progress-container">
+                <div class="progress-bar" id="progressBar"></div>
+              </div> 
+              <div class="row button-container ">
+                <div class=" col-lg-4 col-md-12">
+                  <div class="d-grid form-inline">
+                    <button class="  button white backButton" type="button">Back</button>
                   </div>
                 </div>
-              </div>
-            </div>
+                <div class=" col-lg-8 col-md-12 " >
+                  <div class="d-grid">
+                    <button class="button black  continueButton" type="button">Continue</button>
+                  </div>
+                </div>
+              </div>            
+            </div>          
           </div>
         </div>
       </div>
