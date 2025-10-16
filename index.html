@@ -368,74 +368,219 @@
   Car Directory Search Tab -->
   <section class="theme-bg ">
     <div class="section-overlay" data-overlay-opacity="1" style="background-image: url(images/modern-home/bg/section-bg-pattern-2.png); background-position: center; background-repeat: no-repeat; background-size: cover;"></div>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-7">
-            <div class="car-directory-banner ">
-              <div class="form-Container">
+    <div class="container">
+      <div class="column">
+        <div class="col-md-6" style="margin-inline: auto;">
+          <div class="car-directory-banner">
+            
+            <div class="title-Container ">
+              <div class="carSpecification-Container">
+                <div class="block-1">
+                  <img src="/images/car/mockImage.png" alt="">
+                </div>
+                <div class="block-2">
+                  <h6>Car 1</h6>
+                  <label>Under $400 / Month</label>
+                </div>
+                <div class="block-3">
+                  <a href="">Edit</a>
+                </div>
+              </div>
+              <label class="form-Label">3 minutes from finish</label> 
+        
+              <!-- Progress Bar -->
+              <div class="progress-container">
+                <div class="progress-bar" id="progressBar"></div>
+              </div>
+            </div>
+              <!-- Tab 1 -->
+              <div class="form-Container" >
                 <h6> Get Pre-Approved for the Car You Want at a Price You Can Afford</h6>
-                <label> What type of vehicle are you looking for?</label>
+                <label > What type of vehicle are you looking for?</label>
                 <div class=" img-Container mt-4">
-                   <div class="card-grid">
+                  <div class="card-grid">
                     <div class="div1">
-                      <img src="/images/car/01.jpg" alt="">
+                      <img src="/images/car/mockImage.png" alt="">
                       <h6>Car 1</h6>
                     </div>
 
                     <div class="div2">
-                      <img src="/images/car/01.jpg" alt="">
+                      <img src="/images/car/mockImage.png" alt="">
                       <h6>Car 2</h6>
                     </div>
 
                     <div class="div3">
-                      <img src="/images/car/01.jpg" alt="">
+                      <img src="/images/car/mockImage.png" alt="">
                       <h6>Car 3</h6>
                     </div>
 
                     <div class="div4">
-                      <img src="/images/car/01.jpg" alt="">
+                      <img src="/images/car/mockImage.png" alt="">
                       <h6>Car 4</h6>
                     </div>
 
                     <div class="div5">
-                      <img src="/images/car/01.jpg" alt="">
+                      <img src="/images/car/mockImage.png" alt="">
                       <h6>Car 5</h6>
                     </div>
 
                     <div class="div6">
-                      <img src="/images/car/01.jpg" alt="">
+                      <img src="/images/car/mockImage.png" alt="">
                       <h6>Car 6</h6>
                     </div>
 
                   </div>
                 </div>          
-              </div>          
+              </div> 
+              
+              <!-- Tab 2 -->
+              <div class="form-Container" >
+                <label class="form-Title">What is your budget?</label>
+                <div class="Radio-Form">
+                  <div class="Radio-Block">
+                    <input  type="radio" name="budget" id="budget1" value="Under $400 / Month"  >
+                    <label for="budget1"> Under $400 / Month </label>
+                  </div>
+                  <div class="Radio-Block">
+                    <input  type="radio" name="budget" id="budget2" value="$400 - 499 / Month"  >
+                    <label for="budget2"> $400 - 499 / Month </label>
+                  </div>
+                  <div class="Radio-Block">
+                    <input  type="radio" name="budget" id="budget3" value="$500 - 600 / Month"  >
+                    <label  for="budget3"> $500 - 600 / Month </label>
+                  </div>
+                  <div class="Radio-Block">
+                    <input  type="radio" name="budget" id="budget4" value="Over $400 / Month"  >
+                    <label for="budget4"> Over $400 / Month </label>
+                  </div>
+                  
+                 
+                </div>
+              </div>         
+              
+              <!-- Tab 3 -->
+              <div class="form-Container" >
+                <label class="form-Title">Do you have a trade-in?</label>
+                <div class="Radio-Form">
+                  <div class="Radio-Block">
+                    <input  type="radio" name="tradeIn-status" id="status1" value="Yes"  >
+                    <label for="status1"> Yes </label>
+                  </div>
+                  <div class="Radio-Block">
+                    <input  type="radio" name="tradeIn-status" id="status2" value="No"  >
+                    <label for="status2"> No </label>
+                  </div>
+                  <div class="Radio-Block">
+                    <input  type="radio" name="tradeIn-status" id="status3" value="Unsure"  >
+                    <label  for="status3"> Unsure </label>
+                  </div>
+                 
+                </div>
+              </div>   
+              
+              <!-- Tab 4 -->
+              <div class="form-Container" >
+                <label class="form-Title">What is your estimated credit rating?</label>
+                <div class="Radio-Form">
+                  <div class="Radio-Block">
+                    <input  type="radio" name="credit" id="poorCredit" value="Poor (300-599)"  >
+                    <label for="poorCredit"> Poor (300-599) </label>
+                  </div>
+                  <div class="Radio-Block">
+                    <input  type="radio" name="credit" id="fairCredit" value="Fair (600-659)"  >
+                    <label for="fairCredit"> Fair (600-659) </label>
+                  </div>
+                  <div class="Radio-Block">
+                    <input  type="radio" name="credit" id="goodCredit" value="Good (660-724)"  >
+                    <label  for="goodCredit"> Good (660-724) </label>
+                  </div>
+                  <div class="Radio-Block">
+                    <input  type="radio" name="credit" id="vGoodCredit" value="Very Good (725-759)"  >
+                    <label  for="vGoodCredit"> Very Good (725-759) </label>
+                  </div>
+                  <div class="Radio-Block">
+                    <input  type="radio" name="credit" id="excellentCredit" value="Excellent (760-900)"  >
+                    <label  for="excellentCredit"> Excellent (760-900) </label>
+                  </div>
+                  <div class="Radio-Block">
+                    <input  type="radio" name="credit" id="noCredit" value="No Credit / Unsure"  >
+                    <label  for="noCredit"> No Credit / Unsure </label>
+                  </div>
+                                 
+                </div>
+              </div>   
+              
+              <!-- Tab 5 -->
+              <div class="form-Container" >
+                <label class="form-Title">What is your employment status?</label>
+                <div class="Radio-Form">
+                  <div class="Radio-Block">
+                    <input  type="radio" name="employment-status" id="employed" value="Employed"  >
+                    <label for="employed"> Employed </label>
+                  </div>
+                  <div class="Radio-Block">
+                    <input  type="radio" name="employment-status" id="Self-Employed" value="Self-Employed"  >
+                    <label for="Self-Employed"> Self-Employed </label>
+                  </div>
+                  <div class="Radio-Block">
+                    <input  type="radio" name="employment-status" id="student" value="Student"  >
+                    <label  for="student"> Student </label>
+                  </div>
+                  <div class="Radio-Block">
+                    <input  type="radio" name="employment-status" id="retired" value="Retired / Pension"  >
+                    <label  for="retired"> Retired / Pension </label>
+                  </div>
+                  <div class="Radio-Block">
+                    <input  type="radio" name="employment-status" id="other" value="Other"  >
+                    <label  for="other"> Other </label>
+                  </div>
+                  
+                                 
+                </div>
+              </div> 
+
+              <!-- Tab 6 -->
+              <div class="form-Container" >
+                <label class="form-Title">Income Details <br> Please Select One:</label>
+                <div class="Radio-Form">
+                  <div class="Radio-Block">
+                    <input  type="radio" name="income-details" id="Annual" value="Annual"  >
+                    <label for="Annual"> I Know My Annual Salary</label>
+                  </div>
+                  <div class="Radio-Block">
+                    <input  type="radio" name="income-details" id="Hourly" value="Hourly"  >
+                    <label for="Hourly"> I Know My Hourly Wage </label>
+                  </div>
+                  <div class="Radio-Block">
+                    <input  type="radio" name="income-details" id="Monthly" value="Monthly"  >
+                    <label  for="Monthly"> I Know My Monthly Wage </label>
+                  </div>
+                  <div class="Radio-Block">
+                    <input  type="radio" name="income-details" id="other" value="Other"  >
+                    <label  for="other"> Other </label>
+                  </div>
+                  
+                                 
+                </div>
+              </div>   
+
+              <div class="row button-container ">
+                <div class=" col-lg-4 col-md-12" id="prevBtn">
+                  <div class="d-grid form-inline">
+                    <button class="  button white backButton extra-large" type="button">Back</button>
+                  </div>
+                </div>
+                <div class=" col-lg-8 col-md-12" id="nextBtn" >
+                  <div class="d-grid">
+                    <button class="button black extra-large continueButton" type="button">Continue</button>
+                  </div>
+                </div>
+              </div>            
             </div>             
           </div>
 
 
-          <div class="col-md-5">
-            <div class=" car-directory-banner text-Container">
-              <label class="form-Label">3 minutes from finish</label> 
-
-              <!-- Progress Bar -->
-              <div class="progress-container">
-                <div class="progress-bar" id="progressBar"></div>
-              </div> 
-              <div class="row button-container ">
-                <div class=" col-lg-4 col-md-12">
-                  <div class="d-grid form-inline">
-                    <button class="  button white backButton" type="button">Back</button>
-                  </div>
-                </div>
-                <div class=" col-lg-8 col-md-12 " >
-                  <div class="d-grid">
-                    <button class="button black  continueButton" type="button">Continue</button>
-                  </div>
-                </div>
-              </div>            
-            </div>          
-          </div>
+          
         </div>
       </div>
   </section>
@@ -1264,6 +1409,9 @@
 
   <!-- custom -->
   <script type="text/javascript" src="js/custom.js"></script>
+
+  <!-- multiStep-Form Button action -->
+  <script type="text/javascript" src="js/multiStep-Form/stepAction.js"></script>
 
 
 </body>

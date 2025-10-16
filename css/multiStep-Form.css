@@ -8,71 +8,126 @@
 }
 
 .form-Label{
-    color: white
+  color: white;
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  margin-bottom: 5px;
 }
-
-
 
 /* Progress Bar */
 .progress-container {
   position: relative;
   height: 10px;
   background: #ddd;
-  margin-bottom: 40px;
-  /* width: 80%; */
 }
 
 .progress-bar {
   position: absolute;
   height: 100%;
-  width: 75%;
+  /* width: 75%; */
   background: var(--button-bg-dark);
   /* transition: width 0.4s ease; */
 }
 
+
+
 .button-container{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content:center;
 }
 
 .button-container button{border: 0;}
 
-.car-directory-banner .continueButton {
-    background: var(--button-bg-dark)!important;}
+.car-directory-banner .continueButton {background: var(--button-bg-dark)!important;}
+.car-directory-banner .backButton {margin-bottom: 5px;}
+
+.title-Container {
+  padding-top: 10px;
+  margin-bottom: 20px;
+}
+.title-Container.show-border {
+  border: 1px solid #ddd; 
+}
+
+.carSpecification-Container {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr); 
+  grid-template-rows: 1fr;
+  gap: 10px;
+  padding-inline: 10px;
+  margin-bottom: 10px;
+}
+
+.carSpecification-Container > .block-1 {
+  grid-column: span 2;
+  height: 75px;
+}
+
+.carSpecification-Container > .block-2 {
+  grid-column: span 3;
+  height: 75px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.carSpecification-Container > .block-2 h6{color: white; margin-bottom: 0px;}
+.carSpecification-Container > .block-2 label{color: var(--section-bg-light)}
+
+.carSpecification-Container > .block-3{
+  grid-column: span 1;
+  height: 75px;
+  text-align: right;
+}
+
+.carSpecification-Container a{color: var(--button-bg-dark); font-weight: 400; font-size: 15px; text-decoration: underline;}
+
+.carSpecification-Container img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* or contain */
+}
+
+
+
+/* for test purpose only */
+/* .car-directory-banner  {
+    background: var(--button-bg-dark)!important;} */
 
 .form-Container{
-    padding: 10px;
-    margin-right: 40px;
-    border:black;
-    border-width: 4;
+    /* padding: 10px; */
+    /* margin-right: 40px; */
     text-align: center;
-    
+    min-height: 300px;
 }
 
-.form-Container h6{
-    color: white;
-}
+.form-Container h6{color: white;}
 
-.form-Container label{
-    color:#ddd;
-}
+.form-Container label{color:#ddd;}
+.form-Container .form-Title{font-weight: 500; font-size: 16px;}
 
-
+/* First step form (Tab 1) */
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 columns on large screens */
-  grid-gap: 2px; /* 1px space between divs */
+  grid-template-columns: repeat(3, 1fr); /* 3 columns on large screens, 2 columns on smaller screens */
+  grid-gap: 3px; 
   border-radius: 15px;
-  overflow: hidden; /* keeps the rounded corners clean */
-  max-width: 600px;
   margin: 20px auto;
 }
 
 @media (max-width: 768px) {
-    .card-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
+  .card-grid {grid-template-columns: repeat(2, 1fr);}
+
+  .form-Container{margin-right: 0px;}
+    
+  .card-grid .div1 {border-top-left-radius: 15px;}
+  .card-grid .div2 {border-top-right-radius: 15px;}
+  /* .card-grid .div3 {border-top-right-radius: 0px;} */
+  /* .card-grid .div4 {border-bottom-left-radius: 0px;} */
+  .card-grid .div5 {border-bottom-left-radius: 15px;}
+  .card-grid .div6 {border-bottom-right-radius: 15px;}
 }
 
 .card-grid > div {
@@ -82,11 +137,30 @@
    flex-direction: column;
    justify-content: space-between;
    align-items: center;
-   font-weight: bold;
-   color: #222;
-   border: 1px solid var(--cd-tertiary-color);
    padding: 5px;
+   cursor: pointer;
+   transition: all 0.3s ease;
+   border: 2px solid transparent; /* Add transparent border for smooth transition */
 }
+
+/* Hover state */
+.card-grid > div:hover {
+  background: var(--cd-tertiary-color);  
+  border: 2px solid var(--button-bg-dark); 
+}
+
+/* Active/selected state - when clicked */
+.card-grid > div.active {
+  background: var(--cd-tertiary-color);  
+  border: 2px solid var(--button-bg-dark); 
+}
+
+.card-grid .div1 {border-top-left-radius: 15px;}
+/* .card-grid .div2 {border-top-left-radius: 0px;} */
+.card-grid .div3 {border-top-right-radius: 15px;}
+.card-grid .div4 {border-bottom-left-radius: 15px;}
+/* .card-grid .div5 {border-bottom-left-radius: 0px;} */
+.card-grid .div6 {border-bottom-right-radius: 15px;}
 
 .card-grid  h6 {
    height: 20%;
@@ -100,19 +174,95 @@
 }
 
 
-.progress-steps {
+
+.text-Container {
   display: flex;
-  justify-content: space-between;
-  position: relative;
-  top: -25px;
+  flex-direction: column;
+  justify-content: center;
+  background: green;
 }
 
-.time-step {
-  font-size: 0.85em;
-  color: #666;
+/* Second Step (Tab 2) */
+.Radio-Form{padding-block: 20px;}
+
+.Radio-Form .Radio-Block {
+  border: 1px solid var(--cd-tertiary-color);
+  background: white;
+  padding-block: 15px;
+  padding-inline: 15px;
+  margin-top: 15px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
 }
 
-.time-step.active {
-  color: #4CAF50;
-  font-weight: 600;
+.Radio-Form .Radio-Block:hover {
+  border: 1px solid var(--button-bg-dark);
+  background: #772226;
+  color: var(--button-bg-dark);
 }
+
+.Radio-Form .Radio-Block:has(input[type="radio"]:checked){
+  border-color: var(--cd-secondary-color);
+  background: #772226;
+  color: var(--button-bg-dark);
+}
+
+.Radio-Form .Radio-Block input[type="radio"]:checked + label{
+  color: white;
+}
+
+.Radio-Form .Radio-Block label {
+  color: var(--cd-tertiary-color);
+  margin-inline: auto;
+}
+
+.Radio-Block input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    
+    width: 20px;
+    height: 20px;
+    
+    /* Border for unchecked state */
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    margin-right: 10px;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+/* Unchecked state */
+.Radio-Block input[type="radio"]:not(:checked) {
+    background-color: white;
+    border-color: #999;
+}
+
+/* Checked state */
+.Radio-Block input[type="radio"]:checked {
+    background-color: var(--button-bg-dark); 
+    border-color: var(--button-bg-dark);
+}
+
+.Radio-Block input[type="radio"]:checked::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px;
+    height: 8px;
+    background-color: white;
+    border-radius: 50%;
+}
+
+.Radio-Block input[type="radio"]:hover {
+    border-color: var(--button-bg-dark);
+}
+
+
+
+
+
