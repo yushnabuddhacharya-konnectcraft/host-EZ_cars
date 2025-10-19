@@ -1,5 +1,6 @@
 $(document).ready(function() {
     let currentTab = 0;
+    const forms = $(".form-Container");
     
     
     $(".form-Container").hide();
@@ -106,7 +107,7 @@ $(document).ready(function() {
 
     function updateCarSpecification() {
         const selectedVehicle = $(".card-grid > div.active h6").text() || "Car 1";
-        const selectedBudget = $("input[name='budget']:checked").val() || "Under $400 / Month";
+        const selectedBudget = $("input[name='budget']:checked").val() || {currentTab};
         $(".block-2 h6").text(selectedVehicle);
         $(".block-2 label").text(selectedBudget);
     }
@@ -132,17 +133,11 @@ $(document).ready(function() {
     updateCarSpecificationVisibility();
 
 
-    // map live preview with form    
-    $(".input-detail").click(function() {
-
-    const targetForm = $(this).data("target");
-
-    $("#" + targetForm).show();
-
-    // Optional: highlight clicked preview
-    $(".input-detail").removeClass("active");
-    $(this).addClass("active");
-});
+     $(".input-detail").click(function() {
+        const targetId = $(this).data("target");
+        const targetIndex = forms.index($("#" + targetId));
+        goToTab(targetIndex)
+    });
 
     
     $(".card-grid > div").click(function() {
