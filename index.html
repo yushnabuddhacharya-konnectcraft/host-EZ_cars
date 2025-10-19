@@ -365,11 +365,90 @@
   Banner -->
 
   <!--=================================
-  Car Directory Search Tab -->
+  Car Directory Multi Step form -->
   <section class="theme-bg ">
     <div class="section-overlay" data-overlay-opacity="1" style="background-image: url(images/modern-home/bg/section-bg-pattern-2.png); background-position: center; background-repeat: no-repeat; background-size: cover;"></div>
     <div class="container">
-      <div class="column">
+      <div class="row" style=" padding-top: 100px;">
+        <div class="col-md-5 form-input"> 
+          <div class="car-directory-banner">
+            <div class="formInput-display">
+              <h6>Your Pre-Approval Details</h6>
+              <div class="display-block">
+
+                <!-- form 1 -->
+                <div class="input-detail" data-target="form1-Container" id="form1">
+                  <div class="input-part">
+                    <label for="vehicle-type">Vehicle type Selection : </label>
+                    <p>car 1</p>
+                  </div>
+                  <div class="button-part">
+                    <input  type="radio" name="detail-preview" id="vehicle-type" value="form1"  >
+                  </div>
+                </div>
+
+                <!-- form 2 -->
+                <div class="input-detail" data-target="form2-Container" id="form2">
+                  <div class="input-part" >
+                    <label for="budget">Current Budget : </label>
+                    <p>Under $400 / Month</p>
+                  </div>
+                  <div class="button-part">
+                    <input  type="radio" name="detail-preview" id="budget" value="form2"  >
+                  </div>
+                </div>
+
+                <!-- form 3 -->
+                <div class="input-detail" data-target="form3-Container" id="form3">
+                  <div class="input-part" >
+                    <label for="Trade-in">Trade-in status : </label>
+                    <p>Yes</p>
+                  </div>
+                  <div class="button-part">
+                    <input  type="radio" name="detail-preview" id="Trade-in" value="form3"  >
+                  </div>
+                </div>
+
+                <!-- form 4 -->
+                <div class="input-detail" data-target="form4-Container" id="form4">
+                  <div class="input-part" >
+                    <label for="credit">Estimated credit rating : </label>
+                    <p>Poor (300 - 400)</p>
+                  </div>
+                  <div class="button-part">
+                    <input  type="radio" name="detail-preview" id="credit" value="form4"  >
+                  </div>
+                </div>
+
+                <!-- form 5 -->
+                <div class="input-detail" data-target="form5-Container" id="form5">
+                  <div class="input-part" >
+                    <label for="Employment">Employment status : </label>
+                    <p>status</p>
+                  </div>
+                  <div class="button-part">
+                    <input  type="radio" name="detail-preview" id="Employment" value="form5"  >
+                  </div>
+                </div>
+
+                <!-- form 6 -->
+                <div class="input-detail" data-target="form6-Container" id="form6">
+                  <div class="input-part" >
+                    <label for="Income">Income duration type : </label>
+                    <p>income</p>
+                  </div>
+                  <div class="button-part">
+                    <input  type="radio" name="detail-preview" id="Income" value="form6"  >
+                  </div>
+                </div>
+
+                
+              </div>
+
+            </div>
+          </div>            
+        </div>
+
         <div class="col-md-6" style="margin-inline: auto;">
           <div class="car-directory-banner">
             
@@ -382,11 +461,9 @@
                   <h6>Car 1</h6>
                   <label>Under $400 / Month</label>
                 </div>
-                <div class="block-3">
-                  <a href="">Edit</a>
-                </div>
+                
               </div>
-              <label class="form-Label">3 minutes from finish</label> 
+              <label class="form-Label">Complete Steps for Pre-Approval </label> 
         
               <!-- Progress Bar -->
               <div class="progress-container">
@@ -394,7 +471,7 @@
               </div>
             </div>
               <!-- Tab 1 -->
-              <div class="form-Container" >
+              <div class="form-Container" id="form1-Container" >
                 <h6> Get Pre-Approved for the Car You Want at a Price You Can Afford</h6>
                 <label > What type of vehicle are you looking for?</label>
                 <div class=" img-Container mt-4">
@@ -434,7 +511,7 @@
               </div> 
               
               <!-- Tab 2 -->
-              <div class="form-Container" >
+              <div class="form-Container" id="form2-Container" >
                 <label class="form-Title">What is your budget?</label>
                 <div class="Radio-Form">
                   <div class="Radio-Block">
@@ -459,7 +536,7 @@
               </div>         
               
               <!-- Tab 3 -->
-              <div class="form-Container" >
+              <div class="form-Container" id="form3-Container" >
                 <label class="form-Title">Do you have a trade-in?</label>
                 <div class="Radio-Form">
                   <div class="Radio-Block">
@@ -479,7 +556,7 @@
               </div>   
               
               <!-- Tab 4 -->
-              <div class="form-Container" >
+              <div class="form-Container" id="form4-Container" >
                 <label class="form-Title">What is your estimated credit rating?</label>
                 <div class="Radio-Form">
                   <div class="Radio-Block">
@@ -511,7 +588,7 @@
               </div>   
               
               <!-- Tab 5 -->
-              <div class="form-Container" >
+              <div class="form-Container" id="form5-Container" >
                 <label class="form-Title">What is your employment status?</label>
                 <div class="Radio-Form">
                   <div class="Radio-Block">
@@ -540,7 +617,7 @@
               </div> 
 
               <!-- Tab 6 -->
-              <div class="form-Container" >
+              <div class="form-Container" id="form6-Container" >
                 <label class="form-Title">Income Details <br> Please Select One:</label>
                 <div class="Radio-Form">
                   <div class="Radio-Block">
@@ -577,7 +654,7 @@
                 </div>
               </div>            
             </div>             
-          </div>
+        </div>
 
 
           

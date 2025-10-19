@@ -1,10 +1,12 @@
 $(document).ready(function() {
     let currentTab = 0;
     
+    
     $(".form-Container").hide();
     $(".form-Container").eq(currentTab).show();
+    $(".input-detail").hide();
     
-    updateProgressBar();
+    // updateProgressBar();
 
     function nextTab(){
         if (validateCurrentTab()) {
@@ -44,29 +46,47 @@ $(document).ready(function() {
         updateCarSpecificationVisibility();
     }
     
-    // Function to update progress bar
+    // progress bar function
     function updateProgressBar() {
         const totalTabs = $(".form-Container").length;
-        const progress = ((currentTab + 1) / totalTabs) * 100;
+        const progress = ((currentTab) / totalTabs) * 100;
         $("#progressBar").css("width", progress + "%");
+        $(".progress-percent").text(Math.round(progress) + "%" );
+
+        const roundedProgress = Math.round(progress);
+        if (roundedProgress >= 100) {
+            $(".form-Label").text("All steps completed 🎉");
+        } 
+        else {
+            $(".form-Label").text(`Almost there — ${roundedProgress}% complete`);
+        }
     }
     
-    // Function to update button visibility
+    // button visibility function
     function updateButtonVisibility() {
         const totalTabs = $(".form-Container").length;
         
-        // Show/hide back button
         if (currentTab === 0) {
             $("#prevBtn").hide();
+            $(".form-input").hide();
         } else {
             $("#prevBtn").show();
+            $(".form-input").show();
+
         }
         
-        // Update continue button text on last tab
         if (currentTab === totalTabs - 1) {
             $(".continueButton").text("Submit");
         } else {
             $(".continueButton").text("Continue");
+        }
+
+        if (currentTab === totalTabs ) {
+            $(".backButton").text("Edit");
+            $("#nextBtn").hide();
+        } else {
+            $(".backButton").text("Back");
+            $("#nextBtn").show();
         }
     }
 
@@ -97,8 +117,7 @@ $(document).ready(function() {
         
         if (currentTab === 0) {
             // validation and other function
-            return true;
-        }
+            return true;        }
         
         if (currentTab === 1) {
             if (!$("input[name='budget']:checked").val()) {
@@ -106,13 +125,25 @@ $(document).ready(function() {
                 return false;
             }
             return true;
-        }
-        
+        }        
         return true; 
-    }
-    
+    }    
     updateButtonVisibility();
     updateCarSpecificationVisibility();
+
+
+    // map live preview with form    
+    $(".input-detail").click(function() {
+
+    const targetForm = $(this).data("target");
+
+    $("#" + targetForm).show();
+
+    // Optional: highlight clicked preview
+    $(".input-detail").removeClass("active");
+    $(this).addClass("active");
+});
+
     
     $(".card-grid > div").click(function() {
         console.log("Card clicked!"); 
@@ -122,42 +153,54 @@ $(document).ready(function() {
         
         console.log("Active class added to:", $(this).find("h6").text()); 
         setTimeout(function() {nextTab();}, 300);
-    });
-
-
-    $(".block-3 a").click(function(e) {
-        e.preventDefault();
-        goToTab(0)
+        const selectedVehicle = $(".card-grid > div.active h6").text() || "Car 1";
+        $("#form1 p").text(selectedVehicle);
+        $("#form1 ").show();
     });
 
     $("input[name='budget']").click(function() {
-            setTimeout(function() {
-                nextTab();
-            }, 300);
+        setTimeout(function() {
+            nextTab();
+        }, 300);
+        const selectedBudget = $("input[name='budget']:checked").val() || "Under $400 / Month";
+        $("#form2 p").text(selectedBudget);
+        $("#form2 ").show();
     });
 
     $("input[name='tradeIn-status']").click(function() {
-            setTimeout(function() {
-                nextTab();
-            }, 300);
+        setTimeout(function() {
+            nextTab();
+        }, 300);
+        const selectedStatus = $("input[name='tradeIn-status']:checked").val() || "Under $400 / Month";
+        $("#form3 p").text(selectedStatus);
+        $("#form3").show();
     });
 
     $("input[name='credit']").click(function() {
-            setTimeout(function() {
-                nextTab();
-            }, 300);
+        setTimeout(function() {
+            nextTab();
+        }, 300);
+        const selectedCredit = $("input[name='credit']:checked").val() || "Under $400 / Month";
+        $("#form4 p").text(selectedCredit);
+        $("#form4").show();
     });
 
     $("input[name='employment-status']").click(function() {
-            setTimeout(function() {
-                nextTab();
-            }, 300);
+        setTimeout(function() {
+            nextTab();
+        }, 300);
+        const selectedEmployment = $("input[name='employment-status']:checked").val() || "Under $400 / Month";
+        $("#form5 p").text(selectedEmployment);
+        $("#form5").show();
     });
 
     $("input[name='income-details']").click(function() {
-            setTimeout(function() {
-                nextTab();
-            }, 300);
+        setTimeout(function() {
+            nextTab();
+        }, 300);
+        const selectedIncomeType = $("input[name='income-details']:checked").val() || "Under $400 / Month";
+        $("#form6 p").text(selectedIncomeType);
+        $("#form6").show();
     });
 
 });

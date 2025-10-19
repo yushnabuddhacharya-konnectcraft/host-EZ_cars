@@ -7,6 +7,115 @@
     margin-top: 100px;
 }
 
+/* form-input */
+.formInput-display{
+  max-height: 650px;
+  background: white;
+  border-radius: 15px;
+  padding: 20px;
+}
+
+.formInput-display .display-block{
+  width: 100%;
+  height: 80%;
+  border-radius: 15px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
+  padding-block: 10px;
+}
+
+
+
+.formInput-display .input-detail{
+  height: 75px;
+  width: 100%;
+  background: white;
+  border-radius: 10px;
+  padding: 10px;
+  border: 1px solid var(--cd-tertiary-color);
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.display-block .input-detail:hover{
+  background-color: #ff000033;
+  border: 1px solid var(--cd-primary-color);
+}
+
+.input-detail .input-part{
+  flex: 1;
+  z-index: 2;
+}
+
+.input-detail .input-part label,
+.input-detail .input-part p{
+  color: var(--button-bg-dark);
+}
+
+.formInput-display .input-detail:has(input[type="radio"]:checked){
+  border-color: var(--cd-primary-color);
+  background-color: #ff000033;
+  z-index: 1;
+  color: var(--button-bg-dark);
+}
+
+.button-part input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    
+    width: 15px;
+    height: 15px;
+    
+    /* Border for unchecked state */
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+/* Unchecked state */
+.button-part input[type="radio"]:not(:checked) {
+    background-color: white;
+    border-color: #999;
+}
+
+/* Checked state */
+.button-part input[type="radio"]:checked {
+    background-color: var(--cd-primary-color); 
+    border-color: var(--cd-primary-color);
+}
+
+.button-part input[type="radio"]:checked::before {
+    content: '';
+    position: absolute;
+    /* top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); */
+    width: 7px;
+    height: 7px;
+    background-color: white;
+    border-radius: 50%;
+}
+
+.button-part input[type="radio"]:hover {
+    border-color: var(--cd-primary-color);
+}
+
+.input-detail:has(input[type="radio"]:checked)  label{
+  color: var(--button-bg-dark);
+}
+
+
+
+
 .form-Label{
   color: white;
   display: flex;
@@ -53,7 +162,7 @@
 
 .carSpecification-Container {
   display: grid;
-  grid-template-columns: repeat(6, 1fr); 
+  grid-template-columns: repeat(5, 1fr); 
   grid-template-rows: 1fr;
   gap: 10px;
   padding-inline: 10px;
@@ -76,11 +185,7 @@
 .carSpecification-Container > .block-2 h6{color: white; margin-bottom: 0px;}
 .carSpecification-Container > .block-2 label{color: var(--section-bg-light)}
 
-.carSpecification-Container > .block-3{
-  grid-column: span 1;
-  height: 75px;
-  text-align: right;
-}
+
 
 .carSpecification-Container a{color: var(--button-bg-dark); font-weight: 400; font-size: 15px; text-decoration: underline;}
 
@@ -124,8 +229,8 @@
     
   .card-grid .div1 {border-top-left-radius: 15px;}
   .card-grid .div2 {border-top-right-radius: 15px;}
-  /* .card-grid .div3 {border-top-right-radius: 0px;} */
-  /* .card-grid .div4 {border-bottom-left-radius: 0px;} */
+  .card-grid .div3 {border-top-right-radius: 0px;}
+  .card-grid .div4 {border-bottom-left-radius: 0px;}
   .card-grid .div5 {border-bottom-left-radius: 15px;}
   .card-grid .div6 {border-bottom-right-radius: 15px;}
 }
