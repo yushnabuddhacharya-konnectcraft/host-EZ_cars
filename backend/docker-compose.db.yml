@@ -1,0 +1,22 @@
+version: "3.8"
+services:
+  db:
+    image: postgres:15
+    container_name: ezcars_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ezcars_user
+      POSTGRES_PASSWORD: ezcars_pass
+      POSTGRES_DB: ezcars_db
+    volumes:
+      - ezcars_db_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL","pg_isready -U ezcars_user -d ezcars_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  ezcars_db_data:
