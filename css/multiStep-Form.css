@@ -230,6 +230,14 @@
   .card-grid .div4 {border-bottom-left-radius: 0px;}
   .card-grid .div5 {border-bottom-left-radius: 15px;}
   .card-grid .div6 {border-bottom-right-radius: 15px;}
+
+  .Radio-Form .Radio-Block {
+    width: 100% !important;
+  }
+
+  .formInput-display{
+    display: none;
+  }
 }
 
 .card-grid > div {
@@ -285,7 +293,13 @@
 }
 
 /* Second Step (Tab 2) */
-.Radio-Form{padding-block: 20px;}
+.Radio-Form{
+  padding-block: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 5px;
+}
 
 .Radio-Form .Radio-Block {
   border: 1px solid var(--cd-tertiary-color);
@@ -296,6 +310,7 @@
   display: flex;
   justify-content: start;
   align-items: center;
+  width: 48%;
 }
 
 .Radio-Form .Radio-Block:hover {
@@ -317,6 +332,7 @@
 .Radio-Form .Radio-Block label {
   color: var(--cd-tertiary-color);
   margin-inline: auto;
+  /* background: white; */
 }
 
 .Radio-Block input[type="radio"] {

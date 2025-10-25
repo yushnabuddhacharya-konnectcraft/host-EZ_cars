@@ -96,7 +96,6 @@ $(document).ready(function() {
         if (currentTab >= 2) { // 3rd tab (index 2)
             carSpecContainer.show();
             titleContainer.addClass("show-border");
-            updateCarSpecification();
         } else {
             carSpecContainer.hide();
             titleContainer.removeClass("show-border");
