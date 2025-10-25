@@ -6,6 +6,7 @@ $(document).ready(function() {
     $(".form-Container").hide();
     $(".form-Container").eq(currentTab).show();
     $(".input-detail").hide();
+    $(".form-input").hide();
     
     // updateProgressBar();
 
@@ -56,10 +57,10 @@ $(document).ready(function() {
 
         const roundedProgress = Math.round(progress);
         if (roundedProgress >= 100) {
-            $(".form-Label").text("All steps completed 🎉");
+            $(".form-Label").text("All steps completed ");
         } 
         else {
-            $(".form-Label").text(`Almost there — ${roundedProgress}% complete`);
+            $(".form-Label").text(`Driving You Forward: Application Progress (${roundedProgress}% Complete) `);
         }
     }
     
@@ -68,15 +69,12 @@ $(document).ready(function() {
         const totalTabs = $(".form-Container").length;
         
         if (currentTab === 0) {
-            $("#prevBtn").hide();
-            $(".form-input").hide();
+            $("#prevBtn").hide();            
         } else {
             $("#prevBtn").show();
-            $(".form-input").show();
-
         }
         
-        if (currentTab === totalTabs - 1) {
+        if (currentTab === totalTabs) {
             $(".continueButton").text("Submit");
         } else {
             $(".continueButton").text("Continue");
@@ -105,12 +103,7 @@ $(document).ready(function() {
         }
     }
 
-    function updateCarSpecification() {
-        const selectedVehicle = $(".card-grid > div.active h6").text() || "Car 1";
-        const selectedBudget = $("input[name='budget']:checked").val() || {currentTab};
-        $(".block-2 h6").text(selectedVehicle);
-        $(".block-2 label").text(selectedBudget);
-    }
+   
     
     // Function to validate current tab
     function validateCurrentTab() {
@@ -137,65 +130,88 @@ $(document).ready(function() {
         const targetId = $(this).data("target");
         const targetIndex = forms.index($("#" + targetId));
         goToTab(targetIndex)
+        $('.input-detail input[type="radio"]').prop('checked', false);
+        $(this).find('input[type="radio"]').prop('checked', true);
+    });
+
+     $('.Radio-Block').click(function() {
+        $('.Radio-Block input[type="radio"]').prop('checked', false);
+        $(this).find('input[type="radio"]').prop('checked', true).change();
     });
 
     
+
+    
     $(".card-grid > div").click(function() {
-        console.log("Card clicked!"); 
         
         $(".card-grid > div").removeClass("active");
         $(this).addClass("active");
+        $(".form-input").show();
         
-        console.log("Active class added to:", $(this).find("h6").text()); 
         setTimeout(function() {nextTab();}, 300);
+        const selectedImageSrc = $(".card-grid > div.active img").attr("src");
+        $(".block-1 img").attr("src", selectedImageSrc);
         const selectedVehicle = $(".card-grid > div.active h6").text() || "Car 1";
+        $(".block-2 h6").text(selectedVehicle);
+
         $("#form1 p").text(selectedVehicle);
         $("#form1 ").show();
     });
 
-    $("input[name='budget']").click(function() {
-        setTimeout(function() {
-            nextTab();
-        }, 300);
-        const selectedBudget = $("input[name='budget']:checked").val() || "Under $400 / Month";
-        $("#form2 p").text(selectedBudget);
-        $("#form2 ").show();
+    $("input[name='budget']").change(function() {
+        if ($(this).is(':checked')){
+            setTimeout(function() {
+                nextTab();
+            }, 300);
+            const selectedBudget = $("input[name='budget']:checked").val() || "Under $400 / Month";
+             $(".block-2 label").text(selectedBudget);
+            $("#form2 p").text(selectedBudget);
+            $("#form2 ").show();
+        }
     });
 
-    $("input[name='tradeIn-status']").click(function() {
-        setTimeout(function() {
-            nextTab();
-        }, 300);
-        const selectedStatus = $("input[name='tradeIn-status']:checked").val() || "Under $400 / Month";
-        $("#form3 p").text(selectedStatus);
-        $("#form3").show();
+    $("input[name='tradeIn-status']").change(function() {
+        if ($(this).is(':checked')){
+            setTimeout(function() {
+                nextTab();
+            }, 300);
+            const selectedStatus = $("input[name='tradeIn-status']:checked").val() || "Under $400 / Month";
+            $("#form3 p").text(selectedStatus);
+            $("#form3").show();
+        }
     });
 
-    $("input[name='credit']").click(function() {
-        setTimeout(function() {
-            nextTab();
-        }, 300);
-        const selectedCredit = $("input[name='credit']:checked").val() || "Under $400 / Month";
-        $("#form4 p").text(selectedCredit);
-        $("#form4").show();
+    $("input[name='credit']").change(function() {
+        if ($(this).is(':checked')){
+            setTimeout(function() {
+                nextTab();
+            }, 300);
+            const selectedCredit = $("input[name='credit']:checked").val() || "Under $400 / Month";
+            $("#form4 p").text(selectedCredit);
+            $("#form4").show();
+        }
     });
 
-    $("input[name='employment-status']").click(function() {
-        setTimeout(function() {
-            nextTab();
-        }, 300);
-        const selectedEmployment = $("input[name='employment-status']:checked").val() || "Under $400 / Month";
-        $("#form5 p").text(selectedEmployment);
-        $("#form5").show();
+    $("input[name='employment-status']").change(function() {
+        if ($(this).is(':checked')){
+            setTimeout(function() {
+                nextTab();
+            }, 300);
+            const selectedEmployment = $("input[name='employment-status']:checked").val() || "Under $400 / Month";
+            $("#form5 p").text(selectedEmployment);
+            $("#form5").show();
+        }
     });
 
-    $("input[name='income-details']").click(function() {
-        setTimeout(function() {
-            nextTab();
-        }, 300);
-        const selectedIncomeType = $("input[name='income-details']:checked").val() || "Under $400 / Month";
-        $("#form6 p").text(selectedIncomeType);
-        $("#form6").show();
+    $("input[name='income-details']").change(function() {
+        if ($(this).is(':checked')){
+            setTimeout(function() {
+                nextTab();
+            }, 300);
+            const selectedIncomeType = $("input[name='income-details']:checked").val() || "Under $400 / Month";
+            $("#form6 p").text(selectedIncomeType);
+            $("#form6").show();
+        }
     });
 
 });
