@@ -1,6 +1,7 @@
 $(document).ready(function() {
     let currentTab = 0;
     const forms = $(".form-Container");
+    const totalTabs = $(".form-Container").length;
     
     
     $(".form-Container").hide();
@@ -12,12 +13,22 @@ $(document).ready(function() {
 
     function nextTab(){
         if (validateCurrentTab()) {
+            if ($(".form-Container").eq(currentTab).attr("id") === "form7-Container") {
+            updateForm7Preview();
+        }
             $(".form-Container").eq(currentTab).hide();            
             currentTab++;            
-            $(".form-Container").eq(currentTab).show();            
-            updateProgressBar();            
-            updateButtonVisibility();
-            updateCarSpecificationVisibility();
+            $(".form-Container").eq(currentTab).show();
+            
+            if (currentTab === totalTabs ) {
+                updateButtonVisibility();
+                updateCarSpecificationVisibility();
+            } else{
+                updateProgressBar();            
+                updateButtonVisibility();
+                updateCarSpecificationVisibility();
+            }
+            
         }
     }
     
@@ -52,15 +63,15 @@ $(document).ready(function() {
     function updateProgressBar() {
         const totalTabs = $(".form-Container").length;
         const progress = ((currentTab) / totalTabs) * 100;
+
         $("#progressBar").css("width", progress + "%");
-        $(".progress-percent").text(Math.round(progress) + "%" );
 
         const roundedProgress = Math.round(progress);
         if (roundedProgress >= 100) {
             $(".form-Label").text("All steps completed ");
         } 
         else {
-            $(".form-Label").text(`Driving You Forward: Application Progress (${roundedProgress}% Complete) `);
+            $(".form-Label").text(`Driving You Forward: Application Progress (${roundedProgress} ${currentTab} % Complete) `);
         }
     }
     
@@ -72,20 +83,15 @@ $(document).ready(function() {
             $("#prevBtn").hide();            
         } else {
             $("#prevBtn").show();
-        }
+        }     
         
-        if (currentTab === totalTabs) {
-            $(".continueButton").text("Submit");
-        } else {
-            $(".continueButton").text("Continue");
-        }
 
         if (currentTab === totalTabs ) {
             $(".backButton").text("Edit");
-            $("#nextBtn").hide();
+             $(".continueButton").text("Submit");
         } else {
             $(".backButton").text("Back");
-            $("#nextBtn").show();
+            $(".continueButton").text("Continue");
         }
     }
 
@@ -101,26 +107,99 @@ $(document).ready(function() {
             titleContainer.removeClass("show-border");
         }
     }
+    
+    $('.form-group input').each(function() {
+        toggleLabel($(this));
+    });
+
+    $('.form-group input').on('input focus blur', function() {
+        toggleLabel($(this));
+    });
+
+    function toggleLabel($input) {
+        if ($input.val().trim() !== '' || $input.is(':focus')) {
+        $input.prev('.input-title').addClass('active');
+        $input.addClass('has-value');
+        } else {
+        $input.prev('.input-title').removeClass('active');
+        $input.removeClass('has-value');
+        }
+    }
+
+    $('.form-group input').on('blur', function() {
+        const $input = $(this);
+        const $error = $input.siblings('.error-text'); 
+
+        if ($input.val().trim() === '') {
+            $error.show(); 
+        } else {
+            $error.hide(); 
+        }
+    });
+
+    $('.form-group input').on('input', function() {
+        const $input = $(this);
+        const $error = $input.siblings('.error-text');
+
+        if ($input.val().trim() !== '') {
+            $error.hide();
+        }
+    });
+
+
 
    
     
     // Function to validate current tab
-    function validateCurrentTab() {
-        const currentTabElement = $(".form-Container").eq(currentTab);
-        
-        if (currentTab === 0) {
-            // validation and other function
-            return true;        }
-        
-        if (currentTab === 1) {
-            if (!$("input[name='budget']:checked").val()) {
-                alert("Please select a budget option");
-                return false;
-            }
-            return true;
-        }        
-        return true; 
-    }    
+  function validateCurrentTab() {
+    const currentTabElement = $(".form-Container").eq(currentTab);
+    let isValid = true;
+
+    // 1. Validate text / email / number inputs
+    currentTabElement.find("input").each(function() {
+        const $input = $(this);
+        const value = $input.val().trim();
+        const $errorText = $input.siblings(".error-text");
+
+        if ($input.prop('required') && value === "") {
+            $errorText.show();   // Show error text
+            $input.addClass("input-error"); // optional: add red border
+            isValid = false;
+        } else {
+            $errorText.hide();
+            $input.removeClass("input-error");
+        }
+    });
+
+    // 2. Validate option blocks (radio / custom selection)
+    currentTabElement.find(".form-block").each(function() {
+        const $block = $(this);
+        if ($block.find(".option-block.active").length === 0) {
+            // No option selected
+            alert("Please select an option"); // Or show error message dynamically
+            isValid = false;
+        }
+    });
+
+    return isValid;
+}
+
+function updateForm7Preview() {
+    // Get values from form inputs
+    var firstName = $("#first-name").val().trim();
+    var lastName = $("#last-name").val().trim();
+    var email = $("#Email").val().trim();
+
+    // Update the .input-detail fields
+    var $form7Detail = $("#form7");
+    $form7Detail.find(".input-part").eq(0).find("p").text(firstName || "Not Provided");
+    $form7Detail.find(".input-part").eq(1).find("p").text(lastName || "Not Provided");
+    $form7Detail.find(".input-part").eq(2).find("p").text(email || "Not Provided");
+    $form7Detail.show()
+}
+
+
+  
     updateButtonVisibility();
     updateCarSpecificationVisibility();
 
@@ -129,17 +208,7 @@ $(document).ready(function() {
         const targetId = $(this).data("target");
         const targetIndex = forms.index($("#" + targetId));
         goToTab(targetIndex)
-        $('.input-detail input[type="radio"]').prop('checked', false);
-        $(this).find('input[type="radio"]').prop('checked', true);
     });
-
-     $('.Radio-Block').click(function() {
-        $('.Radio-Block input[type="radio"]').prop('checked', false);
-        $(this).find('input[type="radio"]').prop('checked', true).change();
-    });
-
-    
-
     
     $(".card-grid > div").click(function() {
         
@@ -156,61 +225,103 @@ $(document).ready(function() {
         $("#form1 p").text(selectedVehicle);
         $("#form1 ").show();
     });
+    
+    $("#budget-form > .option-block").click(function() {
+        $("#budget-form > .option-block").removeClass("active");
+        $(this).addClass("active");
 
-    $("input[name='budget']").change(function() {
-        if ($(this).is(':checked')){
-            setTimeout(function() {
-                nextTab();
-            }, 300);
-            const selectedBudget = $("input[name='budget']:checked").val() || "Under $400 / Month";
-             $(".block-2 label").text(selectedBudget);
-            $("#form2 p").text(selectedBudget);
-            $("#form2 ").show();
-        }
+        setTimeout(function() { nextTab(); }, 300);
+
+        const selectedBudget = $("#budget-form > .option-block.active label").text() || "Car 1";
+        $(".block-2 label").text(selectedBudget);
+        $("#form2 p").text(selectedBudget);
+        $("#form2").show();
+    });
+    
+    $("#tradeIn-form> .option-block").click(function() {
+        $("#tradeIn-form> .option-block").removeClass("active");
+        $(this).addClass("active");
+
+        setTimeout(function() { nextTab(); }, 300);
+
+        const selectedTrade = $("#tradeIn-form> .option-block.active label").text() || "Car 1";
+
+        $("#form3 p").text(selectedTrade);
+        $("#form3").show();
+    });
+    
+    $("#credit-form> .option-block").click(function() {
+        $("#credit-form> .option-block").removeClass("active");
+        $(this).addClass("active");
+
+        setTimeout(function() { nextTab(); }, 300);
+
+        const selectedCredit = $("#credit-form> .option-block.active label").text() || "Car 1";
+
+        $("#form4 p").text(selectedCredit);
+        $("#form4").show();
+    });
+    
+    $("#employed-form> .option-block").click(function() {
+        $("#employed-form> .option-block").removeClass("active");
+        $(this).addClass("active");
+
+        setTimeout(function() { nextTab(); }, 300);
+
+        const selectedEmploy = $("#employed-form> .option-block.active label").text() || "Car 1";
+
+        $("#form5 p").text(selectedEmploy);
+        $("#form5").show();
     });
 
-    $("input[name='tradeIn-status']").change(function() {
-        if ($(this).is(':checked')){
-            setTimeout(function() {
-                nextTab();
-            }, 300);
-            const selectedStatus = $("input[name='tradeIn-status']:checked").val() || "Under $400 / Month";
-            $("#form3 p").text(selectedStatus);
-            $("#form3").show();
-        }
+    $("#incomePeriod-form> .option-block").click(function() {
+        $("#incomePeriod-form> .option-block").removeClass("active");
+        $(this).addClass("active");
+
+        setTimeout(function() { nextTab(); }, 300);
+
+        const selectedEmploy = $("#incomePeriod-form> .option-block.active label").text() || "Car 1";
+
+        $("#form6 p").text(selectedEmploy);
+        $("#form6").show();
     });
 
-    $("input[name='credit']").change(function() {
-        if ($(this).is(':checked')){
-            setTimeout(function() {
-                nextTab();
-            }, 300);
-            const selectedCredit = $("input[name='credit']:checked").val() || "Under $400 / Month";
-            $("#form4 p").text(selectedCredit);
-            $("#form4").show();
-        }
-    });
 
-    $("input[name='employment-status']").change(function() {
-        if ($(this).is(':checked')){
-            setTimeout(function() {
-                nextTab();
-            }, 300);
-            const selectedEmployment = $("input[name='employment-status']:checked").val() || "Under $400 / Month";
-            $("#form5 p").text(selectedEmployment);
-            $("#form5").show();
-        }
-    });
+    // sending the data through api
+$(".continueButton").on("click", function(e) {
+    if ($(this).text().trim().toLowerCase() === "submit") {
+        e.preventDefault(); 
 
-    $("input[name='income-details']").change(function() {
-        if ($(this).is(':checked')){
-            setTimeout(function() {
-                nextTab();
-            }, 300);
-            const selectedIncomeType = $("input[name='income-details']:checked").val() || "Under $400 / Month";
-            $("#form6 p").text(selectedIncomeType);
-            $("#form6").show();
-        }
-    });
+        // Collect data from all .input-detail
+        var formData = {};
+        $(".display-block .input-detail").each(function() {
+            $(this).find(".input-part").each(function() {
+                var key = $(this).find("label").text().trim().replace(/:$/, "");
+                var value = $(this).find("p").text().trim();
+                formData[key] = value;
+            });
+        });
+
+        console.log("Data to send:", formData);
+
+        // Send via AJAX
+        $.ajax({
+            url: "http://localhost:3000/forms", 
+            method: "POST",
+            contentType: "application/json",
+            data: JSON.stringify(formData),
+            success: function(response) {
+                console.log("Submission successful:", response);
+                alert("Form submitted successfully!");
+            },
+            error: function(xhr, status, error) {
+                console.error("Submission failed:", error);
+                alert("Failed to submit the form. Please try again.");
+            }
+        });
+    } else {
+        nextTab();
+    }
+});
 
 });

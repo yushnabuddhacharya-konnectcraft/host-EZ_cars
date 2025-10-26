@@ -228,9 +228,7 @@
                     <label for="vehicle-type">Vehicle type Selection : </label>
                     <p>car 1</p>
                   </div>
-                  <div class="button-part">
-                    <input  type="radio" name="detail-preview" id="vehicle-type" value="form1"  >
-                  </div>
+                  
                 </div>
 
                 <!-- form 2 -->
@@ -239,9 +237,7 @@
                     <label for="budget">Current Budget : </label>
                     <p>Under $400 / Month</p>
                   </div>
-                  <div class="button-part">
-                    <input  type="radio" name="detail-preview" id="budget" value="form2"  >
-                  </div>
+                  
                 </div>
 
                 <!-- form 3 -->
@@ -249,9 +245,6 @@
                   <div class="input-part" >
                     <label for="Trade">Trade-in status : </label>
                     <p>Yes</p>
-                  </div>
-                  <div class="button-part">
-                    <input  type="radio" name="detail-preview" id="Trade" value="form3"  >
                   </div>
                 </div>
 
@@ -261,9 +254,6 @@
                     <label for="credit">Estimated credit rating : </label>
                     <p>Poor (300 - 400)</p>
                   </div>
-                  <div class="button-part">
-                    <input  type="radio" name="detail-preview" id="credit" value="form4"  >
-                  </div>
                 </div>
 
                 <!-- form 5 -->
@@ -271,9 +261,6 @@
                   <div class="input-part" >
                     <label for="Employment">Employment status : </label>
                     <p>status</p>
-                  </div>
-                  <div class="button-part">
-                    <input  type="radio" name="detail-preview" id="Employment" value="form5"  >
                   </div>
                 </div>
 
@@ -283,8 +270,21 @@
                     <label for="Income">Income duration type : </label>
                     <p>income</p>
                   </div>
-                  <div class="button-part">
-                    <input  type="radio" name="detail-preview" id="Income" value="form6"  >
+                </div>
+
+                <!-- form 7-->
+                <div class="input-detail" data-target="form7-Container" id="form7">
+                  <div class="input-part" >
+                    <label for="Income">First Name : </label>
+                    <p>income</p>
+                  </div>
+                  <div class="input-part" >
+                    <label for="Income">Last Name : </label>
+                    <p>income</p>
+                  </div>
+                  <div class="input-part" >
+                    <label for="Income">Email : </label>
+                    <p>income</p>
                   </div>
                 </div>
 
@@ -316,13 +316,14 @@
                 <div class="progress-bar" id="progressBar"></div>
               </div>
             </div>
-              <!-- Tab 1 -->
+            
+            <!-- Tab 1 -->
               <div class="form-Container" id="form1-Container" >
                 <h6> Get Pre-Approved for the Car You Want at a Price You Can Afford</h6>
                 <label > What type of vehicle are you looking for?</label>
                 <div class=" img-Container mt-4">
                   <div class="card-grid">
-                    <div class="div1">
+                    <div class="div1 active">
                       <img src="/images/car/car1.png" alt="">
                       <h6>Car 1</h6>
                     </div>
@@ -359,42 +360,33 @@
               <!-- Tab 2 -->
               <div class="form-Container" id="form2-Container" >
                 <label class="form-Title">What is your budget?</label>
-                <div class="Radio-Form">
-                  <div class="Radio-Block">
-                    <input  type="radio" name="budget" id="budget1" value="Under $400 / Month"  >
-                    <label for="budget1"> Under $400 / Month </label>
+                <div class="form-block" id="budget-form">
+                  <div class="option-block active">
+                    <label for="Under $400"> Under $400 / Month </label>
                   </div>
-                  <div class="Radio-Block">
-                    <input  type="radio" name="budget" id="budget2" value="$400 - 499 / Month"  >
-                    <label for="budget2"> $400 - 499 / Month </label>
+                  <div class="option-block">
+                    <label for="$400 - 499"> $400 - 499 / Month </label>
                   </div>
-                  <div class="Radio-Block">
-                    <input  type="radio" name="budget" id="budget3" value="$500 - 600 / Month"  >
-                    <label  for="budget3"> $500 - 600 / Month </label>
+                  <div class="option-block">
+                    <label  for="$500 - 600"> $500 - 600 / Month </label>
                   </div>
-                  <div class="Radio-Block">
-                    <input  type="radio" name="budget" id="budget4" value="Over $400 / Month"  >
-                    <label for="budget4"> Over $400 / Month </label>
-                  </div>
-                  
-                 
+                  <div class="option-block">
+                    <label for="Over $400 "> Over $400 / Month </label>
+                  </div>                
                 </div>
               </div>         
               
               <!-- Tab 3 -->
               <div class="form-Container" id="form3-Container" >
                 <label class="form-Title">Do you have a trade-in?</label>
-                <div class="Radio-Form">
-                  <div class="Radio-Block">
-                    <input  type="radio" name="tradeIn-status" id="status1" value="Yes"  >
+                <div class="form-block" id="tradeIn-form">
+                  <div class="option-block active">
                     <label for="status1"> Yes </label>
                   </div>
-                  <div class="Radio-Block">
-                    <input  type="radio" name="tradeIn-status" id="status2" value="No"  >
+                  <div class="option-block">
                     <label for="status2"> No </label>
                   </div>
-                  <div class="Radio-Block">
-                    <input  type="radio" name="tradeIn-status" id="status3" value="Unsure"  >
+                  <div class="option-block">
                     <label  for="status3"> Unsure </label>
                   </div>
                  
@@ -404,29 +396,23 @@
               <!-- Tab 4 -->
               <div class="form-Container" id="form4-Container" >
                 <label class="form-Title">What is your estimated credit rating?</label>
-                <div class="Radio-Form">
-                  <div class="Radio-Block">
-                    <input  type="radio" name="credit" id="poorCredit" value="Poor (300-599)"  >
+                <div class="form-block" id="credit-form">
+                  <div class="option-block active">
                     <label for="poorCredit"> Poor (300-599) </label>
                   </div>
-                  <div class="Radio-Block">
-                    <input  type="radio" name="credit" id="fairCredit" value="Fair (600-659)"  >
+                  <div class="option-block">
                     <label for="fairCredit"> Fair (600-659) </label>
                   </div>
-                  <div class="Radio-Block">
-                    <input  type="radio" name="credit" id="goodCredit" value="Good (660-724)"  >
+                  <div class="option-block">
                     <label  for="goodCredit"> Good (660-724) </label>
                   </div>
-                  <div class="Radio-Block">
-                    <input  type="radio" name="credit" id="vGoodCredit" value="Very Good (725-759)"  >
+                  <div class="option-block">
                     <label  for="vGoodCredit"> Very Good (725-759) </label>
                   </div>
-                  <div class="Radio-Block">
-                    <input  type="radio" name="credit" id="excellentCredit" value="Excellent (760-900)"  >
+                  <div class="option-block">
                     <label  for="excellentCredit"> Excellent (760-900) </label>
                   </div>
-                  <div class="Radio-Block">
-                    <input  type="radio" name="credit" id="noCredit" value="No Credit / Unsure"  >
+                  <div class="option-block">
                     <label  for="noCredit"> No Credit / Unsure </label>
                   </div>
                                  
@@ -436,56 +422,78 @@
               <!-- Tab 5 -->
               <div class="form-Container" id="form5-Container" >
                 <label class="form-Title">What is your employment status?</label>
-                <div class="Radio-Form">
-                  <div class="Radio-Block">
-                    <input  type="radio" name="employment-status" id="employed" value="Employed"  >
+                <div class="form-block" id="employed-form">
+                  <div class="option-block">
                     <label for="employed"> Employed </label>
                   </div>
-                  <div class="Radio-Block">
-                    <input  type="radio" name="employment-status" id="Self-Employed" value="Self-Employed"  >
+                  <div class="option-block">
                     <label for="Self-Employed"> Self-Employed </label>
                   </div>
-                  <div class="Radio-Block">
-                    <input  type="radio" name="employment-status" id="student" value="Student"  >
+                  <div class="option-block">
                     <label  for="student"> Student </label>
                   </div>
-                  <div class="Radio-Block">
-                    <input  type="radio" name="employment-status" id="retired" value="Retired / Pension"  >
+                  <div class="option-block">
                     <label  for="retired"> Retired / Pension </label>
                   </div>
-                  <div class="Radio-Block">
-                    <input  type="radio" name="employment-status" id="other" value="Other"  >
+                  <div class="option-block">
                     <label  for="other"> Other </label>
                   </div>
                   
                                  
                 </div>
               </div> 
+ 
 
               <!-- Tab 6 -->
               <div class="form-Container" id="form6-Container" >
                 <label class="form-Title">Income Details <br> Please Select One:</label>
-                <div class="Radio-Form">
-                  <div class="Radio-Block">
-                    <input  type="radio" name="income-details" id="Annual" value="Annual"  >
+                <div class="form-block" id="incomePeriod-form">
+                  <div class="option-block active">
                     <label for="Annual"> I Know My Annual Salary</label>
                   </div>
-                  <div class="Radio-Block">
-                    <input  type="radio" name="income-details" id="Hourly" value="Hourly"  >
+                  <div class="option-block">
                     <label for="Hourly"> I Know My Hourly Wage </label>
                   </div>
-                  <div class="Radio-Block">
-                    <input  type="radio" name="income-details" id="Monthly" value="Monthly"  >
+                  <div class="option-block">
                     <label  for="Monthly"> I Know My Monthly Wage </label>
                   </div>
-                  <div class="Radio-Block">
-                    <input  type="radio" name="income-details" id="other" value="Other"  >
+                  <div class="option-block">
                     <label  for="other"> Other </label>
                   </div>
                   
                                  
                 </div>
-              </div>   
+              </div> 
+              
+              <!-- Tab 7 -->
+              <div class="form-Container" id="form7-Container" >
+                <label class="form-Title">How much do you get paid per hour?</label>
+                <div class="column textForm-container">
+                             
+  
+                  <div class="col-lg-12 form-group">
+                    <label for="first-name" class="input-title">First Name </label>
+                    <input  type="text" placeholder=" " id="first-name" class="form-control input-lg placeholder" name="name" required>
+                    <p class="error-text">Please enter your first name </p>
+                  </div>   
+
+                  <div class="col-lg-12 form-group">
+                    <label for="last-name" class="input-title">Last Name </label>
+                    <input  type="text" placeholder=" " id="last-name" class="form-control input-lg placeholder" name="name">
+                    <p class="error-text">Please enter your last name</p>
+                  </div> 
+
+                  <div class="col-lg-12 form-group">
+                    <label for="Email" class="input-title">Email </label>
+                    <input  type="email" placeholder=" " id="Email" class="form-control input-lg placeholder" name="name">
+                    <p class="error-text">Please enter a valid email address</p>
+                  </div>               
+                                 
+                </div>
+              </div>  
+               
+
+
 
               <div class="row button-container ">
                 <div class=" col-lg-4 col-md-12" id="prevBtn">
@@ -1335,6 +1343,9 @@
 
   <!-- multiStep-Form Button action -->
   <script type="text/javascript" src="js/multiStep-Form/stepAction.js"></script>
+
+  <!-- floating form -->
+  <script type="text/javascript" src="js/forms/floating-form.js"></script>
 
 
 </body>

@@ -29,13 +29,14 @@
 
 
 .formInput-display .input-detail{
-  height: 75px;
+  min-height: 75px;
   width: 100%;
   background: white;
   border-radius: 10px;
   padding: 10px;
   border: 1px solid var(--cd-tertiary-color);
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   margin-bottom: 15px;
 }
@@ -55,60 +56,7 @@
   color: var(--button-bg-dark);
 }
 
-.formInput-display .input-detail:has(input[type="radio"]:checked){
-  border-color: var(--cd-primary-color);
-  background-color: #ff000033;
-  z-index: 1;
-  color: var(--button-bg-dark);
-}
 
-.button-part input[type="radio"] {
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    
-    width: 15px;
-    height: 15px;
-    
-    /* Border for unchecked state */
-    border: 2px solid #ccc;
-    border-radius: 50%;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
-}
-
-/* Unchecked state */
-.button-part input[type="radio"]:not(:checked) {
-    background-color: white;
-    border-color: #999;
-}
-
-/* Checked state */
-.button-part input[type="radio"]:checked {
-    background-color: var(--cd-primary-color); 
-    border-color: var(--cd-primary-color);
-}
-
-.button-part input[type="radio"]:checked::before {
-    content: '';
-    position: absolute;
-    width: 7px;
-    height: 7px;
-    background-color: white;
-    border-radius: 50%;
-}
-
-.button-part input[type="radio"]:hover {
-    border-color: var(--cd-primary-color);
-}
-
-.input-detail:has(input[type="radio"]:checked)  label{
-  color: var(--button-bg-dark);
-}
 
 
 
@@ -231,7 +179,7 @@
   .card-grid .div5 {border-bottom-left-radius: 15px;}
   .card-grid .div6 {border-bottom-right-radius: 15px;}
 
-  .Radio-Form .Radio-Block {
+  .form-block .option-block {
     width: 100% !important;
   }
 
@@ -293,7 +241,7 @@
 }
 
 /* Second Step (Tab 2) */
-.Radio-Form{
+.form-block{
   padding-block: 20px;
   display: flex;
   flex-wrap: wrap;
@@ -301,7 +249,7 @@
   gap: 5px;
 }
 
-.Radio-Form .Radio-Block {
+.form-block .option-block {
   border: 1px solid var(--cd-tertiary-color);
   background: white;
   padding-block: 15px;
@@ -313,72 +261,95 @@
   width: 48%;
 }
 
-.Radio-Form .Radio-Block:hover {
+.form-block .option-block:hover,
+.form-block .option-block.active {
   border: 1px solid var(--button-bg-dark);
   background: #772226;
-  color: var(--button-bg-dark);
 }
 
-.Radio-Form .Radio-Block:has(input[type="radio"]:checked){
-  border-color: var(--cd-secondary-color);
-  background: #772226;
-  color: var(--button-bg-dark);
-}
+.form-block .option-block:hover label,
+.form-block .option-block.active label
+ {color: var(--section-bg-light);}
 
-.Radio-Form .Radio-Block input[type="radio"]:checked + label{
-  color: white;
-}
 
-.Radio-Form .Radio-Block label {
-  color: var(--cd-tertiary-color);
+
+.form-block .option-block label {
+  color: var(--cd-secondary-color);
   margin-inline: auto;
   /* background: white; */
 }
 
-.Radio-Block input[type="radio"] {
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    
-    width: 20px;
-    height: 20px;
-    
-    /* Border for unchecked state */
-    border: 2px solid #ccc;
-    border-radius: 50%;
-    margin-right: 10px;
-    position: relative;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
+
+
+/* text input form css */
+
+.textForm-container {
+  margin-top: 20px;
 }
 
-/* Unchecked state */
-.Radio-Block input[type="radio"]:not(:checked) {
-    background-color: white;
-    border-color: #999;
+.textForm-container .form-group {
+  position: relative;
 }
 
-/* Checked state */
-.Radio-Block input[type="radio"]:checked {
-    background-color: var(--button-bg-dark); 
-    border-color: var(--button-bg-dark);
+.textForm-container .error-text{
+  text-align: left;
+  font-size: 14px;
+  margin-top: 0px !important;
+  color: var(--section-bg-dark);
 }
 
-.Radio-Block input[type="radio"]:checked::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 8px;
-    height: 8px;
-    background-color: white;
-    border-radius: 50%;
+.form-control.input-lg.placeholder {
+    width: 100%;
+    padding: 15px ;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    background: white;
+    transition: all 0.3s ease;
 }
 
-.Radio-Block input[type="radio"]:hover {
-    border-color: var(--button-bg-dark);
+.form-group{margin-bottom: 20px;}
+
+
+.form-group input:focus,
+.form-group input.has-value {
+    outline: none;
+    border: 1px solid var(--button-bg-dark);
+    padding-top: 25px !important;
+    padding-bottom: 5px !important;
 }
+
+.form-group .input-title{
+  position: absolute;
+  font-size: 18px ;
+  left: 15px;
+  color: var(--cd-tertiary-color);
+  cursor: text;
+  text-transform: none;
+  transition: all 0.3s ease-in-out; 
+}
+
+.form-group:focus-within .input-title,
+.form-group .input-title.active{
+  color: var(--cd-secondary-color);
+  position: absolute;
+  font-size: 12px;
+  top: -8px;
+}
+
+.textForm-container .form-control:focus{
+  border: 1px solid var(--button-bg-dark);
+  padding: 15px;
+
+}
+
+.form-group:focus-within .input-title {color: var(--cd-secondary-color);}
+
+
+
+
+
+
+
 
 
 
