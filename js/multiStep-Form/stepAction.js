@@ -13,9 +13,21 @@ $(document).ready(function() {
 
     function nextTab(){
         if (validateCurrentTab()) {
+            const currentForm = $(".form-Container").eq(currentTab);
+            // const formId = currentForm.attr("id");
+            const activeLabel = currentForm.find(".option-block.active label").text().trim();
+
+            if (activeLabel) {
+                // const $preview = $(`.input-detail[data-target='${formId}']`);
+                // $preview.find("p").text(activeLabel);
+                console.log("Selected option in current tab:", activeLabel,);
+            } else {
+                console.log("No active option selected in this tab.");
+            }
+
             if ($(".form-Container").eq(currentTab).attr("id") === "form7-Container") {
-            updateForm7Preview();
-        }
+                updateForm7Preview();
+            }
             $(".form-Container").eq(currentTab).hide();            
             currentTab++;            
             $(".form-Container").eq(currentTab).show();
@@ -293,7 +305,8 @@ function updateForm7Preview() {
 
     // sending the data through api
 $(".continueButton").on("click", function(e) {
-    if ($(this).text().trim().toLowerCase() === "submit") {
+    const totalTabs = $(".form-Container").length;
+    if (currentTab === totalTabs ) {
         e.preventDefault(); 
 
         // Collect data from all .input-detail
