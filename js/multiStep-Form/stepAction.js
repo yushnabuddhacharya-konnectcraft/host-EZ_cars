@@ -1,13 +1,13 @@
 $(document).ready(function() {
     let currentTab = 0;
     const forms = $(".form-Container");
-    const totalTabs = $(".form-Container").length;
     
     
     $(".form-Container").hide();
     $(".form-Container").eq(currentTab).show();
     $(".input-detail").hide();
     $(".form-input").hide();
+    $("#form-submission").hide()
     
     // updateProgressBar();
 
@@ -19,16 +19,9 @@ $(document).ready(function() {
             $(".form-Container").eq(currentTab).hide();            
             currentTab++;            
             $(".form-Container").eq(currentTab).show();
-            
-            if (currentTab === totalTabs ) {
-                updateButtonVisibility();
-                updateCarSpecificationVisibility();
-            } else{
-                updateProgressBar();            
-                updateButtonVisibility();
-                updateCarSpecificationVisibility();
-            }
-            
+            updateProgressBar();            
+            updateButtonVisibility();
+            updateCarSpecificationVisibility();
         }
     }
     
@@ -86,12 +79,21 @@ $(document).ready(function() {
         }     
         
 
+        if (currentTab == totalTabs -1 ) {
+            $(".continueButton").text("Submit");
+            
+        } else {
+            $(".continueButton").text("Continue");
+        }
+
         if (currentTab === totalTabs ) {
             $(".backButton").text("Edit");
-             $(".continueButton").text("Submit");
+            $("#Full-form").hide();
+            $(".input-detail").hide();
+            $(".form-input").hide();
+            $("#form-submission").show()
         } else {
             $(".backButton").text("Back");
-            $(".continueButton").text("Continue");
         }
     }
 
@@ -107,6 +109,8 @@ $(document).ready(function() {
             titleContainer.removeClass("show-border");
         }
     }
+
+    // form input-title function
     
     $('.form-group input').each(function() {
         toggleLabel($(this));
@@ -151,7 +155,7 @@ $(document).ready(function() {
    
     
     // Function to validate current tab
-  function validateCurrentTab() {
+    function validateCurrentTab() {
     const currentTabElement = $(".form-Container").eq(currentTab);
     let isValid = true;
 
@@ -162,8 +166,8 @@ $(document).ready(function() {
         const $errorText = $input.siblings(".error-text");
 
         if ($input.prop('required') && value === "") {
-            $errorText.show();   // Show error text
-            $input.addClass("input-error"); // optional: add red border
+            $errorText.show();   
+            $input.addClass("input-error"); 
             isValid = false;
         } else {
             $errorText.hide();
@@ -175,8 +179,7 @@ $(document).ready(function() {
     currentTabElement.find(".form-block").each(function() {
         const $block = $(this);
         if ($block.find(".option-block.active").length === 0) {
-            // No option selected
-            alert("Please select an option"); // Or show error message dynamically
+            alert("Please select an option"); 
             isValid = false;
         }
     });
@@ -219,6 +222,7 @@ function updateForm7Preview() {
         setTimeout(function() {nextTab();}, 300);
         const selectedImageSrc = $(".card-grid > div.active img").attr("src");
         $(".block-1 img").attr("src", selectedImageSrc);
+        $("#form-submission img").attr("src", selectedImageSrc)
         const selectedVehicle = $(".card-grid > div.active h6").text() || "Car 1";
         $(".block-2 h6").text(selectedVehicle);
 

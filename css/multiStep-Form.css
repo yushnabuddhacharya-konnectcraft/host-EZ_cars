@@ -9,6 +9,8 @@
 
 /* form-input */
 .formInput-display{
+  display: flex;
+  flex-direction: column;
   max-height: 650px;
   background: white;
   border-radius: 15px;
@@ -22,14 +24,16 @@
   margin-top: 20px;
   display: flex;
   flex-direction: column;
-  overflow: scroll;
+  overflow-y: auto;
   padding-block: 10px;
+  padding-right: 10px; /* 👈 adds space so scrollbar doesn’t overlap */
+  box-sizing: content-box;
 }
 
 
 
 .formInput-display .input-detail{
-  min-height: 75px;
+  min-height: 70px;
   width: 100%;
   background: white;
   border-radius: 10px;
@@ -316,6 +320,7 @@
     border: 1px solid var(--button-bg-dark);
     padding-top: 25px !important;
     padding-bottom: 5px !important;
+    background: white;
 }
 
 .form-group .input-title{
