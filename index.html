@@ -90,6 +90,7 @@
                   <ul class="menu-links">
                     <!-- active class -->
                     <li class="mega-menu-item active"><a href="index.html">Home </a></li>
+                    <li class="mega-menu-item"><a href="faq.html">Blog </a></li>
                     <li class="mega-menu-item"><a href="faq.html">FAQ </a></li>
                     
                     <li><a href="contact-modern.html"> Contact </a></li>
@@ -183,9 +184,20 @@
       </nav>
       <!-- menu end -->
     </div>
+    
   </header>
   <!--=================================
  header -->
+
+<!-- Custom Alert -->
+<div id="customAlert" class="custom-alert">
+  <i class="fa fa-info " style="margin-inline: 20px;"></i>
+  <p class="alert-message" ></p>
+</div>
+
+
+
+
 
   <!--=================================
  Banner -->
@@ -272,8 +284,77 @@
                   </div>
                 </div>
 
-                <!-- form 7-->
+                <!-- form 7 -->
                 <div class="input-detail" data-target="form7-Container" id="form7">
+                  <div class="input-part" >
+                    <label for="Income">Paid Per Hour : </label>
+                    <p>20</p>
+                  </div>
+                </div>
+
+                <!-- form 8 -->
+                <div class="input-detail" data-target="form8-Container" id="form8">
+                  <div class="input-part" >
+                    <label for="Income">Income Received Period : </label>
+                    <p>20</p>
+                  </div>
+                </div>
+
+                <!-- form 9 -->
+                <div class="input-detail" data-target="form9-Container" id="form9">
+                  <div class="input-part" >
+                    <label for="Income">Job Title: </label>
+                    <p>20</p>
+                  </div>
+                  <div class="input-part" >
+                    <label for="Income">Company Name / Work: </label>
+                    <p>20</p>
+                  </div>
+                </div>
+
+                <!-- form 11 -->
+                <div class="input-detail" data-target="form11-Container" id="form11">
+                  <div class="input-part" >
+                    <label for="Income">Residence Duration: </label>
+                    <p>20</p>
+                  </div>
+                </div>
+
+                
+                <!-- form 12 -->
+                <div class="input-detail" data-target="form12-Container" id="form12">
+                  <div class="input-part" >
+                    <label for="Income">Residence-Type: </label>
+                    <p>20</p>
+                  </div>
+                  <div class="input-part" >
+                    <label for="Income">Monthly-payment : </label>
+                    <p>20</p>
+                  </div>
+                </div>
+                
+                <!-- form 13 -->
+                <div class="input-detail" data-target="form13-Container" id="form13">
+                  <div class="input-part" >
+                    <label for="Income">Citizenship Status : </label>
+                    <p>20</p>
+                  </div>
+                  <div class="input-part" >
+                    <label for="Income">Driver-license: </label>
+                    <p>20</p>
+                  </div>
+                </div>
+                
+                <!-- form 14 -->
+                <div class="input-detail" data-target="form14-Container" id="form14">
+                  <div class="input-part" >
+                    <label for="Income">Date of birth : </label>
+                    <p>20</p>
+                  </div>
+                </div>
+
+                <!-- form 15-->
+                <div class="input-detail" data-target="form15-Container" id="form15">
                   <div class="input-part" >
                     <label for="Income">First Name : </label>
                     <p>income</p>
@@ -285,6 +366,22 @@
                   <div class="input-part" >
                     <label for="Income">Email : </label>
                     <p>income</p>
+                  </div>
+                </div>
+                
+                <!-- form 16 -->
+                <div class="input-detail" data-target="form16-Container" id="form16">
+                  <div class="input-part" >
+                    <label for="Income">Home Address : </label>
+                    <p>20</p>
+                  </div>
+                </div>
+                
+                <!-- form 17 -->
+                <div class="input-detail" data-target="form17-Container" id="form17">
+                  <div class="input-part" >
+                    <label for="Income">Phone Number : </label>
+                    <p>20</p>
                   </div>
                 </div>
 
@@ -301,7 +398,7 @@
             <div class="title-Container ">
               <div class="carSpecification-Container">
                 <div class="block-1">
-                  <img src="/images/car/mockImage.png" alt="">
+                  <img src="/images/car/car1.png" alt="">
                 </div>
                 <div class="block-2">
                   <h6>Car 1</h6>
@@ -316,6 +413,12 @@
                 <div class="progress-bar" id="progressBar"></div>
               </div>
             </div>
+
+           
+
+            
+
+
             
             <!-- Tab 1 -->
               <div class="form-Container" id="form1-Container" >
@@ -423,7 +526,7 @@
               <div class="form-Container" id="form5-Container" >
                 <label class="form-Title">What is your employment status?</label>
                 <div class="form-block" id="employed-form">
-                  <div class="option-block">
+                  <div class="option-block active">
                     <label for="employed"> Employed </label>
                   </div>
                   <div class="option-block">
@@ -465,11 +568,176 @@
                 </div>
               </div> 
 
-             
-              
-              <!-- Tab 7 -->
+               <!-- Tab 7 -->
               <div class="form-Container" id="form7-Container" >
                 <label class="form-Title">How much do you get paid per hour?</label>
+                <div class="form-block" id="paid-hour">
+                  <div class="option-block active">
+                    <label for="under 20"> $15 - $19 / hour </label>
+                  </div>
+                  <div class="option-block">
+                    <label for="20 - 29"> $20 - $29 / hour</label>
+                  </div>
+                  <div class="option-block">
+                    <label  for="30 - 39"> $30 - $39 / hour</label>
+                  </div>
+                  <div class="option-block">
+                    <label  for="40 -49"> $40 - $49 / hour </label>
+                  </div>
+                  <div class="option-block">
+                    <label  for="50-plus"> $50+ / hour</label>
+                  </div>
+                  
+                                 
+                </div>
+                
+              </div>
+
+            <!-- Tab 8 -->
+              <div class="form-Container" id="form8-Container" >
+                <label class="form-Title">How long have you been receiving this income?</label>
+                <div class="form-block" id="receive-period">
+                  <div class="option-block active">
+                    <label for="less than 6 mon"> Less than 6 months </label>
+                  </div>
+                  <div class="option-block">
+                    <label for="0.5-1year"> 0.5 - 1 year</label>
+                  </div>
+                  <div class="option-block">
+                    <label  for="1-2 years"> 1 - 2 years</label>
+                  </div>
+                  <div class="option-block">
+                    <label  for="2-5 years"> 2 - 5 years </label>
+                  </div>
+                  <div class="option-block">
+                    <label  for="more than 5 years"> More than 5 years</label>
+                  </div>                 
+                                 
+                </div>                
+              </div>
+
+            <!-- Tab 9 -->
+              <div class="form-Container" id="form9-Container" >
+                <label class="form-Title">What do you do for work?</label>
+                <div class="column textForm-container">
+                  <div class="col-lg-12 form-group">
+                    <label for="job-title" class="input-title">Job Title</label>
+                    <input  type="text" placeholder=" " id="job-title" class="form-control input-lg placeholder" name="name" required>
+                    <p class="error-text">Please enter your first name </p>
+                  </div>   
+
+                  <div class="col-lg-12 form-group">
+                    <label for="Company/place" class="input-title">Company Name / Where You Work </label>
+                    <input  type="text" placeholder=" " id="Company/place" class="form-control input-lg placeholder" name="name">
+                    <p class="error-text">Please enter your last name</p>
+                  </div>
+                </div>
+              </div> 
+
+            <!-- Tab 10 -->
+              <div class="form-Container" id="form10-Container" >
+                <label class="form-Title">Based on the info you have provided your current monthly <br> income before taxes & deductions is:</label>
+                <h6>$2600</h6>
+                <label for=""> Is this correct?</label>
+                <div class="form-block" id="income-check">
+                  <div class="option-block active">
+                    <label for="yes"> Yes </label>
+                  </div>
+                  <div class="option-block">
+                    <label for="No"> No </label>
+                  </div>
+                </div>
+              </div>
+
+             <!-- Tab 11 -->
+              <div class="form-Container" id="form11-Container" >
+                <label class="form-Title">How long have you lived at your current address?</label>
+                <div class="form-block" id="living-period">
+                  <div class="option-block active">
+                    <label for="less than 6 month"> Less than 6 months </label>
+                  </div>
+                  <div class="option-block">
+                    <label for="0.5 - 1 year"> 0.5 - 1 year</label>
+                  </div>
+                  <div class="option-block">
+                    <label  for="1 - 2 years"> 1 - 2 years</label>
+                  </div>
+                  <div class="option-block">
+                    <label  for="2 - 5 years"> 2 - 5 years </label>
+                  </div>
+                  <div class="option-block">
+                    <label  for="more than 5 years"> More than 5 years</label>
+                  </div>                 
+                                 
+                </div>                
+              </div>
+
+             <!-- Tab 12 -->
+              <div class="form-Container" id="form12-Container" >
+                <label class="form-Title">Do you rent or own your home?</label>
+                <div class="form-block" id="Residence-Type">
+                  <div class="option-block active">
+                    <label for="Rent"> Rent </label>
+                  </div>
+                  <div class="option-block">
+                    <label for="Own"> Own</label>
+                  </div>
+                  
+                </div> 
+
+                <div class="column textForm-container">
+                  <div class="col-lg-12 form-group">
+                    <label for="Monthly-payment" class="input-title">Monthly Payment<span style="margin: 18px;">(Round to Nearest Dollar)</span> </label>
+                    <input  type="text" placeholder=" " id="Monthly-payment" class="form-control input-lg placeholder" name="name">
+                    <p class="error-text">Please enter your last name</p>
+                  </div>
+                </div>
+                
+                
+                                 
+                </div>                
+              </div>
+
+             <!-- Tab 13 -->
+              <div class="form-Container" id="form13-Container" >
+                <div class="form-block" id="Citizenship-status">
+                  <label class="form-Title">Are you a Canadian citizen or permanent resident</label>
+                  <div class="option-block active">
+                    <label for="under 20"> Yes </label>
+                  </div>
+                  <div class="option-block">
+                    <label for="20 - 29">No</label>
+                  </div>
+                </div>                
+                <div class="form-block" id="Driver-license">
+                  <label class="form-Title">Do you have a valid Canadian driver's license?</label>
+                  <div class="option-block active">
+                    <label for="under 20"> Yes </label>
+                  </div>
+                  <div class="option-block">
+                    <label for="20 - 29">No</label>
+                  </div>
+                </div>                
+              </div>
+
+            <!-- Tab 14 -->
+              <div class="form-Container" id="form14-Container" >
+                <label class="form-Title">What is your date of birth?</label>
+                <div class="column textForm-container">
+                             
+  
+                  <div class="col-lg-12 form-group">
+                    <label for="birth-date" class="input-title">DD / MM / YYYY </label>
+                    <input  type="date" placeholder=" " id="birth-date" class="form-control input-lg placeholder" name="name" required>
+                    <p class="error-text">Please enter your first name </p>
+                  </div>   
+                                 
+                </div>
+              </div> 
+              
+            <!-- Tab 15 -->
+              <div class="form-Container" id="form15-Container" >
+                <label class="form-Title">Almost done!  <br> Create your account:</label>
                 <div class="column textForm-container">
                              
   
@@ -489,10 +757,47 @@
                     <label for="Email" class="input-title">Email </label>
                     <input  type="email" placeholder=" " id="Email" class="form-control input-lg placeholder" name="name">
                     <p class="error-text">Please enter a valid email address</p>
-                  </div>               
+                  </div>  
+                  
+                  <h6>Never miss a deal from Canada Drives!</h6>
+                  <p>Sign up for exclusive offers and updates sent to your inbox or phone. Unsubscribe anytime. See our Privacy Policy and Terms for details.</p>
+
                                  
                 </div>
-              </div>  
+              </div> 
+              
+            <!-- Tab 16 -->
+              <div class="form-Container" id="form16-Container" >
+                <label class="form-Title">Where are you looking for a vehicle?</label>
+                <div class="column textForm-container">
+                  <p>Type in your address and select from the list</p>
+                             
+  
+                  <div class="col-lg-12 form-group">
+                    <label for="address" class="input-title">Home Address </label>
+                    <input  type="date" placeholder=" " id="address" class="form-control input-lg placeholder" name="name" required>
+                    <p class="error-text">Please enter your first name </p>
+                  </div>   
+                                 
+                </div>
+              </div> 
+
+            <!-- Tab 17 -->
+              <div class="form-Container" id="form17-Container" >
+                <label class="form-Title">Please verify your phone number.</label>
+                <div class="column textForm-container">
+                  <p>This helps us confirm your identity and secure your account. When you tap "Submit" we will text you a verification code. Message and data rates any apply. </p>
+  
+                  <div class="col-lg-12 form-group">
+                    <label for="Phone-number" class="input-title">Phone Number </label>
+                    <input  type="date" placeholder=" " id="Phone-number" class="form-control input-lg placeholder" name="name" required>
+                    <p class="error-text">Please enter your first name </p>
+                  </div>
+                  
+                  <p>By clicking "Submit" I agree to Canada Drives 'Membership Rules, General Terms of Service and Privacy Policy. I give my consent to Canada Drives, car dealers and leaders obtainig credit reports about me to facilitate my application for a car loan.</p>
+                                 
+                </div>
+              </div> 
                
 
 

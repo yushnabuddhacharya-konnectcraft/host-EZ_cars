@@ -11,23 +11,57 @@ $(document).ready(function() {
     
     // updateProgressBar();
 
+    function showAlert(message, bgColor = "rgba(40, 167, 69, 0.3)", textColor = "#28a745", duration = 4000) {
+        const $alert = $("#customAlert");
+
+        $alert.css({
+            background: bgColor,
+            color: textColor,
+        });
+        $alert.find(".alert-message").text(message);
+
+        $alert.addClass("show");
+
+        setTimeout(() => {
+            $alert.removeClass("show");
+        }, duration);
+        }
+
+
+
     function nextTab(){
         if (validateCurrentTab()) {
             const currentForm = $(".form-Container").eq(currentTab);
-            // const formId = currentForm.attr("id");
-            const activeLabel = currentForm.find(".option-block.active label").text().trim();
+            const formId = currentForm.attr("id");
+            // const activeLabel = currentForm.find(".option-block.active label").text().trim();
 
-            if (activeLabel) {
-                // const $preview = $(`.input-detail[data-target='${formId}']`);
-                // $preview.find("p").text(activeLabel);
-                console.log("Selected option in current tab:", activeLabel,);
-            } else {
-                console.log("No active option selected in this tab.");
-            }
+            // if (activeLabel) {
+            //     const $preview = $(`.input-detail[data-target='${formId}']`);
+            //     $preview.find("p").text(activeLabel);
+            //     console.log("Selected option in current tab:", activeLabel, $preview);
+            // } else {
+            //     console.log("No active option selected in this tab.");
+            // }
 
-            if ($(".form-Container").eq(currentTab).attr("id") === "form7-Container") {
-                updateForm7Preview();
-            }
+            // mapping between container and their respectively function
+           const updateFunctionMap = {
+            "form9-Container": updateEmploymentDetail,
+            "form12-Container": updateMonthlyPayment,
+            "form14-Container": updatebirthdate,
+            "form15-Container": updateAccountDetail,
+            "form16-Container": updateAddress,
+            "form17-Container": updatePhoneNumber,
+            };
+
+            
+        const functionName = updateFunctionMap[formId];
+        if (functionName && typeof window[functionName] === "function") {
+            console.log("Running:", functionName);
+            window[functionName](); // ✅ call dynamically
+        } else {
+            console.log("No specific update function for", formId);
+        }
+
             $(".form-Container").eq(currentTab).hide();            
             currentTab++;            
             $(".form-Container").eq(currentTab).show();
@@ -199,19 +233,7 @@ $(document).ready(function() {
     return isValid;
 }
 
-function updateForm7Preview() {
-    // Get values from form inputs
-    var firstName = $("#first-name").val().trim();
-    var lastName = $("#last-name").val().trim();
-    var email = $("#Email").val().trim();
-
-    // Update the .input-detail fields
-    var $form7Detail = $("#form7");
-    $form7Detail.find(".input-part").eq(0).find("p").text(firstName || "Not Provided");
-    $form7Detail.find(".input-part").eq(1).find("p").text(lastName || "Not Provided");
-    $form7Detail.find(".input-part").eq(2).find("p").text(email || "Not Provided");
-    $form7Detail.show()
-}
+    
 
 
   
@@ -302,6 +324,111 @@ function updateForm7Preview() {
         $("#form6").show();
     });
 
+    $("#paid-hour> .option-block").click(function() {
+        $("#paid-hour> .option-block").removeClass("active");
+        $(this).addClass("active");
+
+        setTimeout(function() { nextTab(); }, 300);
+
+        const selectedEmploy = $("#paid-hour> .option-block.active label").text() || "Car 1";
+
+        $("#form7 p").text(selectedEmploy);
+        $("#form7").show();
+    });
+
+    $("#receive-period> .option-block").click(function() {
+        $("#receive-period> .option-block").removeClass("active");
+        $(this).addClass("active");
+
+        setTimeout(function() { nextTab(); }, 300);
+
+        const selectedEmploy = $("#receive-period> .option-block.active label").text() || "Car 1";
+
+        $("#form8 p").text(selectedEmploy);
+        $("#form8").show();
+    });
+
+    function updateEmploymentDetail() {
+        // Get values from form inputs
+        var jobTitle = $("#job-title").val().trim();
+        var companyDetail = $("#Company/place").val().trim();
+
+        // Update the .input-detail fields
+        var $form9Detail = $("#form9");
+        $form9Detail.find(".input-part").eq(0).find("p").text(jobTitle || "Not Provided");
+        $form9Detail.find(".input-part").eq(1).find("p").text(companyDetail || "Not Provided");
+        $form9Detail.show()
+    }
+
+    $("#living-period> .option-block").click(function() {
+        $("#living-period> .option-block").removeClass("active");
+        $(this).addClass("active");
+
+        setTimeout(function() { nextTab(); }, 300);
+
+        const selectedEmploy = $("#living-period> .option-block.active label").text() || "Car 1";
+
+        $("#form11 p").text(selectedEmploy);
+        $("#form11").show();
+    });
+
+    $("#Residence-Type> .option-block").click(function() {
+        $("#Residence-Type> .option-block").removeClass("active");
+        $(this).addClass("active");
+
+        const selectedEmploy = $("#Residence-Type> .option-block.active label").text() || "Car 1";
+
+        $("#form11 p").text(selectedEmploy);
+        $("#form11").show();
+    });
+
+    function updateMonthlyPayment() {
+        var monthlyPayment = $("#Monthly-payment").val().trim();
+
+        var $form12Detail = $("#form12");
+        $form12Detail.find(".input-part").eq(1).find("p").text(monthlyPayment || "Not Provided");
+        $form12Detail.show()
+    }
+
+    function updatebirthdate() {
+        var birthdate = $("#birth-date").val().trim();
+
+        var $form14Detail = $("#form14");
+        $form14Detail.find(".input-part").eq(1).find("p").text(birthdate || "Not Provided");
+        $form14Detail.show()
+    }
+
+    function updateAccountDetail() {
+        // Get values from form inputs
+        var firstName = $("#first-name").val().trim();
+        var lastName = $("#last-name").val().trim();
+        var email = $("#Email").val().trim();
+
+        // Update the .input-detail fields
+        var $form15Detail = $("#form15");
+        $form15Detail.find(".input-part").eq(0).find("p").text(firstName || "Not Provided");
+        $form15Detail.find(".input-part").eq(1).find("p").text(lastName || "Not Provided");
+        $form15Detail.find(".input-part").eq(2).find("p").text(email || "Not Provided");
+        $form15Detail.show()
+    }
+    
+    function updateAddress() {
+        var address = $("#address").val().trim();
+
+        var $form16Detail = $("#form16");
+        $form16Detail.find(".input-part").eq(1).find("p").text(address || "Not Provided");
+        $form16Detail.show()
+    }
+    
+    function updatePhoneNumber() {
+        var phoneNumber = $("#Phone-number").val().trim();
+
+        var $form17Detail = $("#form17");
+        $form17Detail.find(".input-part").eq(1).find("p").text(phoneNumber || "Not Provided");
+        $form17Detail.show()
+    }
+
+    
 
     // sending the data through api
 $(".continueButton").on("click", function(e) {
@@ -329,11 +456,11 @@ $(".continueButton").on("click", function(e) {
             data: JSON.stringify(formData),
             success: function(response) {
                 console.log("Submission successful:", response);
-                alert("Form submitted successfully!");
+                showAlert("Form submitted successfully!", "#28a745", "#fff"); 
             },
             error: function(xhr, status, error) {
                 console.error("Submission failed:", error);
-                alert("Failed to submit the form. Please try again.");
+                showAlert("Failed to submit form!", "#db2d2e", "#fff"); 
             }
         });
     } else {
