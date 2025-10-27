@@ -52,7 +52,7 @@
 .formInput-display{
   display: flex;
   flex-direction: column;
-  max-height: 650px;
+  height: 520px;
   background: white;
   border-radius: 15px;
   padding: 20px;
@@ -129,8 +129,6 @@
   /* transition: width 0.4s ease; */
 }
 
-
-
 .button-container{
     display: flex;
     flex-direction: row;
@@ -189,7 +187,8 @@
 
 /* for test purpose only */
 /* .car-directory-banner  {
-    background: var(--button-bg-dark)!important;} */
+    background: var(--button-bg-dark)!important;
+  padding-block: 20px;} */
 
 .form-Container{
     /* padding: 10px; */
@@ -390,7 +389,17 @@
 
 .form-group:focus-within .input-title {color: var(--cd-secondary-color);}
 
+input[type="date"]::placeholder{
+  color: transparent;
+}
 
+/* Hide the default placeholder text for date inputs */
+input[type="date"]::-webkit-datetime-edit-text,
+input[type="date"]::-webkit-datetime-edit-month-field,
+input[type="date"]::-webkit-datetime-edit-day-field,
+input[type="date"]::-webkit-datetime-edit-year-field {
+    color: transparent; /* hides default text */
+}
 
 
 

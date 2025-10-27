@@ -54,12 +54,9 @@ $(document).ready(function() {
             };
 
             
-        const functionName = updateFunctionMap[formId];
-        if (functionName && typeof window[functionName] === "function") {
-            console.log("Running:", functionName);
-            window[functionName](); // ✅ call dynamically
-        } else {
-            console.log("No specific update function for", formId);
+         if (updateFunctionMap.hasOwnProperty(formId)) {
+            console.log("Running function for:", formId);
+            updateFunctionMap[formId](); 
         }
 
             $(".form-Container").eq(currentTab).hide();            
@@ -351,7 +348,7 @@ $(document).ready(function() {
     function updateEmploymentDetail() {
         // Get values from form inputs
         var jobTitle = $("#job-title").val().trim();
-        var companyDetail = $("#Company/place").val().trim();
+        var companyDetail = $("#Company-detail").val().trim();
 
         // Update the .input-detail fields
         var $form9Detail = $("#form9");
