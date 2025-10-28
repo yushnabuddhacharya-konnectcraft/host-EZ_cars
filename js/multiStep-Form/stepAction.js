@@ -63,8 +63,8 @@ $(document).ready(function() {
             // }
 
             $(".form-Container").eq(currentTab).hide();            
-            currentTab = Math.min(currentTab + 1, $(".form-Container").length - 1);
-            $(".form-Container").hide();
+            currentTab++; 
+            // alert("this is current tab " + currentTab);
             $(".form-Container").eq(currentTab).show();
             updateProgressBar();            
             updateButtonVisibility();
@@ -228,8 +228,8 @@ $(document).ready(function() {
     currentTabElement.find(".form-block").each(function() {
         const $block = $(this);
         if ($block.find(".option-block.active").length === 0) {
-            showAlert("Please select an option", "#15181f", "#fff"); 
-            isValid = false;
+            $active = $block.find(".option-block").first();
+            $active.addClass("active");
         }
     });
 
@@ -239,7 +239,7 @@ $(document).ready(function() {
     updateButtonVisibility();
     updateCarSpecificationVisibility();
 
-    $(".input-detail").click(function() {
+     $(".input-detail").click(function() {
         const targetId = $(this).data("target");
         const targetIndex = forms.index($("#" + targetId));
         goToTab(targetIndex)
