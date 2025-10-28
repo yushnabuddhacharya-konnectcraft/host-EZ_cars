@@ -46,7 +46,14 @@
   line-height: 1.4;
 }
 
+.form-Container .note-block{display: flex; margin-block: 40px;}
+.form-Container .note-block .second-block{display: flex; flex-direction: column; flex: 1; text-align: left; margin-left: 55px;}
 
+.form-Container .form-note{
+  color: white;
+  font-size: 17px;
+  line-height: 25px;
+}
 
 /* form-input */
 .formInput-display{
@@ -69,16 +76,16 @@
   padding-block: 10px;
   padding-right: 10px; /* 👈 adds space so scrollbar doesn’t overlap */
   box-sizing: content-box;
+  scroll-behavior: smooth;
 }
 
-
-
 .formInput-display .input-detail{
-  min-height: 70px;
+  /* max-height: 75px; */
   width: 100%;
   background: white;
   border-radius: 10px;
-  padding: 10px;
+  padding-inline: 10px;
+  padding-top: 10px;
   border: 1px solid var(--cd-tertiary-color);
   display: flex;
   flex-direction: column;
@@ -191,16 +198,17 @@
   padding-block: 20px;} */
 
 .form-Container{
-    /* padding: 10px; */
+    padding-block: 10px;
     /* margin-right: 40px; */
     text-align: center;
     min-height: 300px;
+    /* background: yellow; */
 }
 
 .form-Container h6{color: white;}
 
 .form-Container label{color:#ddd;}
-.form-Container .form-Title{font-weight: 500; font-size: 16px;}
+.form-Container .form-Title{font-weight: 500; font-size: 18px; color: var(--section-bg-light);}
 
 /* First step form (Tab 1) */
 .card-grid {
@@ -391,6 +399,15 @@
 
 input[type="date"]::placeholder{
   color: transparent;
+}
+
+input[type="date"]::before {
+  content: attr(placeholder);
+  color: #999;
+}
+
+input[type="date"]:valid::before {
+  content: "" !important;
 }
 
 /* Hide the default placeholder text for date inputs */

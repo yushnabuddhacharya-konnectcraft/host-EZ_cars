@@ -31,8 +31,27 @@ $(document).ready(function() {
 
     function nextTab(){
         if (validateCurrentTab()) {
+            autoScrollToVisible();
+
             const currentForm = $(".form-Container").eq(currentTab);
             const formId = currentForm.attr("id");
+            
+            // mapping between container and their respectively function
+            const updateFunctionMap = {
+                "form9-Container": updateEmploymentDetail,
+                "form12-Container": updateMonthlyPayment,
+                "form13-Container": updateCitizenshipAndLicense,
+                "form14-Container": updatebirthdate,
+                "form15-Container": updateAccountDetail,
+                "form16-Container": updateAddress,
+                "form17-Container": updatePhoneNumber,
+            };
+            
+            
+            if (updateFunctionMap.hasOwnProperty(formId)) {
+                console.log("Running function for:", formId);
+                updateFunctionMap[formId](); 
+            }
             // const activeLabel = currentForm.find(".option-block.active label").text().trim();
 
             // if (activeLabel) {
@@ -43,24 +62,9 @@ $(document).ready(function() {
             //     console.log("No active option selected in this tab.");
             // }
 
-            // mapping between container and their respectively function
-           const updateFunctionMap = {
-            "form9-Container": updateEmploymentDetail,
-            "form12-Container": updateMonthlyPayment,
-            "form14-Container": updatebirthdate,
-            "form15-Container": updateAccountDetail,
-            "form16-Container": updateAddress,
-            "form17-Container": updatePhoneNumber,
-            };
-
-            
-         if (updateFunctionMap.hasOwnProperty(formId)) {
-            console.log("Running function for:", formId);
-            updateFunctionMap[formId](); 
-        }
-
             $(".form-Container").eq(currentTab).hide();            
-            currentTab++;            
+            currentTab++; 
+            // alert("this is current tab " + currentTab);
             $(".form-Container").eq(currentTab).show();
             updateProgressBar();            
             updateButtonVisibility();
@@ -107,7 +111,7 @@ $(document).ready(function() {
             $(".form-Label").text("All steps completed ");
         } 
         else {
-            $(".form-Label").text(`Driving You Forward: Application Progress (${roundedProgress} ${currentTab} % Complete) `);
+            $(".form-Label").text(`Driving You Forward: Application Progress ( Step ${currentTab +1} of ${totalTabs + 1}) `);
         }
     }
     
@@ -193,7 +197,22 @@ $(document).ready(function() {
         }
     });
 
+    // function autoScrollToVisible() {
+    //     const $parent = $(".display-block");
+    //     const $visibleItems = $parent.children(".input-detail:visible");
+    //     const $last = $visibleItems.last();
 
+    //     if ($last.length) {
+    //        $parent.scrollTop($last.position().top + $parent.scrollTop() - $parent.offset().top);
+    //     }
+    // }
+
+    function autoScrollToVisible() {
+        const $parent = $(".display-block");
+        $parent.stop().animate({
+        scrollTop: $parent[0].scrollHeight
+        }, 500); // 
+    }
 
    
     
@@ -375,23 +394,61 @@ $(document).ready(function() {
 
         const selectedEmploy = $("#Residence-Type> .option-block.active label").text() || "Car 1";
 
-        $("#form11 p").text(selectedEmploy);
-        $("#form11").show();
-    });
-
+        $("#form12 .input-part p").eq(0).text(selectedEmploy);
+        
+    });    
+    
     function updateMonthlyPayment() {
+        const $residenceType = $("#Residence-Type > .option-block.active label");
+        const residenceType = $residenceType.text().trim() || "Not Provided";
+    
         var monthlyPayment = $("#Monthly-payment").val().trim();
-
+        
         var $form12Detail = $("#form12");
+        $form12Detail.find(".input-part").eq(0).find("p").text(residenceType || "Not Provided");
         $form12Detail.find(".input-part").eq(1).find("p").text(monthlyPayment || "Not Provided");
         $form12Detail.show()
+    }  
+    
+    $("#Citizenship-status> .option-block").click(function() {
+        
+        $("#Citizenship-status> .option-block").removeClass("active");
+        $(this).addClass("active");
+
+        const selectedStatus = $("#Citizenship-status> .option-block.active label").text() || "Car 1";
+
+        $("#form13 .input-part p").eq(0).text(selectedStatus);        
+    }); 
+
+    $("#Driver-license> .option-block").click(function() {
+        $("#Driver-license> .option-block").removeClass("active");
+        $(this).addClass("active");
+
+        const selectedStatus = $("#Driver-license> .option-block.active label").text() || "Car 1";
+
+        $("#form13 .input-part p").eq(1).text(selectedStatus);        
+    }); 
+    
+    function updateCitizenshipAndLicense() {
+        const $citizenship = $("#Citizenship-status > .option-block.active label");
+        const citizenshipText = $citizenship.text().trim() || "Not Provided";
+    
+        const $license = $("#Driver-license > .option-block.active label");
+        const licenseText = $license.text().trim() || "Not Provided";
+    
+        const $form13 = $("#form13");
+        $form13.find(".input-part").eq(0).find("p").text(citizenshipText);
+        $form13.find(".input-part").eq(1).find("p").text(licenseText);
+    
+        $form13.show();
     }
+
 
     function updatebirthdate() {
         var birthdate = $("#birth-date").val().trim();
 
         var $form14Detail = $("#form14");
-        $form14Detail.find(".input-part").eq(1).find("p").text(birthdate || "Not Provided");
+        $form14Detail.find(".input-part").eq(0).find("p").text(birthdate || "Not Provided");
         $form14Detail.show()
     }
 
@@ -413,7 +470,7 @@ $(document).ready(function() {
         var address = $("#address").val().trim();
 
         var $form16Detail = $("#form16");
-        $form16Detail.find(".input-part").eq(1).find("p").text(address || "Not Provided");
+        $form16Detail.find(".input-part").eq(0).find("p").text(address || "Not Provided");
         $form16Detail.show()
     }
     
@@ -421,7 +478,7 @@ $(document).ready(function() {
         var phoneNumber = $("#Phone-number").val().trim();
 
         var $form17Detail = $("#form17");
-        $form17Detail.find(".input-part").eq(1).find("p").text(phoneNumber || "Not Provided");
+        $form17Detail.find(".input-part").eq(0).find("p").text(phoneNumber || "Not Provided");
         $form17Detail.show()
     }
 
@@ -447,7 +504,7 @@ $(".continueButton").on("click", function(e) {
 
         // Send via AJAX
         $.ajax({
-            url: "http://localhost:3000/forms", 
+            url: "https://localhost:3000/forms", 
             method: "POST",
             contentType: "application/json",
             data: JSON.stringify(formData),
