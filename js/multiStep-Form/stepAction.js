@@ -63,8 +63,8 @@ $(document).ready(function() {
             // }
 
             $(".form-Container").eq(currentTab).hide();            
-            currentTab++; 
-            // alert("this is current tab " + currentTab);
+            currentTab = Math.min(currentTab + 1, $(".form-Container").length - 1);
+            $(".form-Container").hide();
             $(".form-Container").eq(currentTab).show();
             updateProgressBar();            
             updateButtonVisibility();
@@ -197,31 +197,18 @@ $(document).ready(function() {
         }
     });
 
-    // function autoScrollToVisible() {
-    //     const $parent = $(".display-block");
-    //     const $visibleItems = $parent.children(".input-detail:visible");
-    //     const $last = $visibleItems.last();
-
-    //     if ($last.length) {
-    //        $parent.scrollTop($last.position().top + $parent.scrollTop() - $parent.offset().top);
-    //     }
-    // }
-
     function autoScrollToVisible() {
         const $parent = $(".display-block");
         $parent.stop().animate({
         scrollTop: $parent[0].scrollHeight
         }, 500); // 
-    }
-
-   
+    }   
     
     // Function to validate current tab
     function validateCurrentTab() {
     const currentTabElement = $(".form-Container").eq(currentTab);
     let isValid = true;
 
-    // 1. Validate text / email / number inputs
     currentTabElement.find("input").each(function() {
         const $input = $(this);
         const value = $input.val().trim();
@@ -241,23 +228,18 @@ $(document).ready(function() {
     currentTabElement.find(".form-block").each(function() {
         const $block = $(this);
         if ($block.find(".option-block.active").length === 0) {
-            alert("Please select an option"); 
+            showAlert("Please select an option", "#15181f", "#fff"); 
             isValid = false;
         }
     });
 
     return isValid;
-}
-
-    
-
-
+    }
   
     updateButtonVisibility();
     updateCarSpecificationVisibility();
 
-
-     $(".input-detail").click(function() {
+    $(".input-detail").click(function() {
         const targetId = $(this).data("target");
         const targetIndex = forms.index($("#" + targetId));
         goToTab(targetIndex)
@@ -457,12 +439,14 @@ $(document).ready(function() {
         var firstName = $("#first-name").val().trim();
         var lastName = $("#last-name").val().trim();
         var email = $("#Email").val().trim();
+        var dealNotify = $("#deal-notify").is(":checked") ? "Yes" : "No";
 
         // Update the .input-detail fields
         var $form15Detail = $("#form15");
         $form15Detail.find(".input-part").eq(0).find("p").text(firstName || "Not Provided");
         $form15Detail.find(".input-part").eq(1).find("p").text(lastName || "Not Provided");
         $form15Detail.find(".input-part").eq(2).find("p").text(email || "Not Provided");
+        $form15Detail.find(".input-part").eq(3).find("p").text(dealNotify);
         $form15Detail.show()
     }
     

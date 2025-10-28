@@ -47,7 +47,8 @@
 }
 
 .form-Container .note-block{display: flex; margin-block: 40px;}
-.form-Container .note-block .second-block{display: flex; flex-direction: column; flex: 1; text-align: left; margin-left: 55px;}
+.form-Container .note-block .second-block{display: flex; flex-direction: column; flex: 1; text-align: left; margin-left: 35px;}
+.form-Container .note-block .first-block{margin-top: 5px;}
 
 .form-Container .form-note{
   color: white;
@@ -201,7 +202,7 @@
     padding-block: 10px;
     /* margin-right: 40px; */
     text-align: center;
-    min-height: 300px;
+    min-height: 100px;
     /* background: yellow; */
 }
 
@@ -397,25 +398,11 @@
 
 .form-group:focus-within .input-title {color: var(--cd-secondary-color);}
 
-input[type="date"]::placeholder{
-  color: transparent;
-}
-
-input[type="date"]::before {
-  content: attr(placeholder);
-  color: #999;
-}
-
-input[type="date"]:valid::before {
-  content: "" !important;
-}
-
-/* Hide the default placeholder text for date inputs */
-input[type="date"]::-webkit-datetime-edit-text,
-input[type="date"]::-webkit-datetime-edit-month-field,
-input[type="date"]::-webkit-datetime-edit-day-field,
-input[type="date"]::-webkit-datetime-edit-year-field {
-    color: transparent; /* hides default text */
+.note-block input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--button-bg-dark, #007bff); 
+  cursor: pointer;
 }
 
 
