@@ -46,11 +46,12 @@ $(document).ready(function() {
                 "form16-Container": updateAddress,
                 "form17-Container": updatePhoneNumber,
             };
-            
+
+            let proceed = true;
             
             if (updateFunctionMap.hasOwnProperty(formId)) {
                 console.log("Running function for:", formId);
-                updateFunctionMap[formId](); 
+                proceed= updateFunctionMap[formId](); 
             }
             // const activeLabel = currentForm.find(".option-block.active label").text().trim();
 
@@ -62,9 +63,12 @@ $(document).ready(function() {
             //     console.log("No active option selected in this tab.");
             // }
 
+            if (!proceed) {
+                console.log("Validation failed in:", formId);
+                return;
+            }
             $(".form-Container").eq(currentTab).hide();            
             currentTab++; 
-            // alert("this is current tab " + currentTab);
             $(".form-Container").eq(currentTab).show();
             updateProgressBar();            
             updateButtonVisibility();
@@ -224,7 +228,6 @@ $(document).ready(function() {
         }
     });
 
-    // 2. Validate option blocks (radio / custom selection)
     currentTabElement.find(".form-block").each(function() {
         const $block = $(this);
         if ($block.find(".option-block.active").length === 0) {
@@ -347,16 +350,35 @@ $(document).ready(function() {
     });
 
     function updateEmploymentDetail() {
-        // Get values from form inputs
+        let isValid = true;
         var jobTitle = $("#job-title").val().trim();
         var companyDetail = $("#Company-detail").val().trim();
 
-        // Update the .input-detail fields
+        if (!jobTitle) {
+            $("#job-title").siblings(".error-text").show();
+            isValid = false;
+        }
+
+        if (!companyDetail) {
+            $("#Company-detail").siblings(".error-text").show();
+            isValid = false;
+        }
+
+        if (!isValid) return false;
+
         var $form9Detail = $("#form9");
         $form9Detail.find(".input-part").eq(0).find("p").text(jobTitle || "Not Provided");
         $form9Detail.find(".input-part").eq(1).find("p").text(companyDetail || "Not Provided");
         $form9Detail.show()
+
+        return true;
     }
+
+    $("#income-check> .option-block").click(function() {
+        $("#income-check> .option-block").removeClass("active");
+        $(this).addClass("active");
+        setTimeout(function() { nextTab(); }, 300);
+    });
 
     $("#living-period> .option-block").click(function() {
         $("#living-period> .option-block").removeClass("active");
@@ -381,15 +403,30 @@ $(document).ready(function() {
     });    
     
     function updateMonthlyPayment() {
+        let isValid = true;
         const $residenceType = $("#Residence-Type > .option-block.active label");
         const residenceType = $residenceType.text().trim() || "Not Provided";
     
         var monthlyPayment = $("#Monthly-payment").val().trim();
         
+        if (!monthlyPayment || isNaN(monthlyPayment) || Number(monthlyPayment) <= 0) {
+            $("#Monthly-payment").siblings(".error-text").show();
+            isValid = false;
+        }
+
+        // Validate residence type
+        if (!residenceType) {
+            $("#Residence-Type").siblings(".error-text").show();
+            isValid = false;
+        }
+
+        if (!isValid) return false;
+
         var $form12Detail = $("#form12");
         $form12Detail.find(".input-part").eq(0).find("p").text(residenceType || "Not Provided");
         $form12Detail.find(".input-part").eq(1).find("p").text(monthlyPayment || "Not Provided");
         $form12Detail.show()
+        return true;
     }  
     
     $("#Citizenship-status> .option-block").click(function() {
@@ -412,58 +449,125 @@ $(document).ready(function() {
     }); 
     
     function updateCitizenshipAndLicense() {
+        let isValid = true;
         const $citizenship = $("#Citizenship-status > .option-block.active label");
         const citizenshipText = $citizenship.text().trim() || "Not Provided";
     
         const $license = $("#Driver-license > .option-block.active label");
         const licenseText = $license.text().trim() || "Not Provided";
     
+        if (!citizenshipText) {
+            $("#Citizenship-status").siblings(".error-text").show();
+            isValid = false;
+        }
+
+        if (!licenseText) {
+            $("#Driver-license").siblings(".error-text").show();
+            isValid = false;
+        }
+
+        if (!isValid) return false;
+
         const $form13 = $("#form13");
         $form13.find(".input-part").eq(0).find("p").text(citizenshipText);
-        $form13.find(".input-part").eq(1).find("p").text(licenseText);
-    
+        $form13.find(".input-part").eq(1).find("p").text(licenseText);   
         $form13.show();
+        return true;
     }
 
 
     function updatebirthdate() {
+        let isValid = true;
         var birthdate = $("#birth-date").val().trim();
+        var $errorText = $("#birth-date").siblings(".error-text");
+
+        if (!birthdate) {
+            $errorText.show();
+            isValid=false;
+        }
+
+        var enteredDate = new Date(birthdate);
+        var today = new Date();
+        enteredDate.setHours(0, 0, 0, 0);
+        today.setHours(0, 0, 0, 0);
+
+        if (enteredDate > today) {
+            $errorText.show();
+            isValid=false;
+        }
 
         var $form14Detail = $("#form14");
         $form14Detail.find(".input-part").eq(0).find("p").text(birthdate || "Not Provided");
-        $form14Detail.show()
+        $form14Detail.show();
+        return true;
     }
 
     function updateAccountDetail() {
-        // Get values from form inputs
+        let isValid = true;
         var firstName = $("#first-name").val().trim();
         var lastName = $("#last-name").val().trim();
         var email = $("#Email").val().trim();
         var dealNotify = $("#deal-notify").is(":checked") ? "Yes" : "No";
 
-        // Update the .input-detail fields
         var $form15Detail = $("#form15");
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!firstName) {
+            $("#first-name").siblings(".error-text").show();
+            isValid = false;
+        }
+
+        if (!lastName) {
+            $("#first-name").siblings(".error-text").show();
+            isValid = false;
+        }
+
+        if (!emailPattern.test(email)) {
+            $("#Email").siblings(".error-text").show();
+            isValid = false;
+        }
+
+        if (!isValid) return false;
+
         $form15Detail.find(".input-part").eq(0).find("p").text(firstName || "Not Provided");
         $form15Detail.find(".input-part").eq(1).find("p").text(lastName || "Not Provided");
         $form15Detail.find(".input-part").eq(2).find("p").text(email || "Not Provided");
         $form15Detail.find(".input-part").eq(3).find("p").text(dealNotify);
         $form15Detail.show()
+        return true;
     }
     
     function updateAddress() {
+        let isValid = true;
         var address = $("#address").val().trim();
+
+        if (!address) {
+            $("#address").siblings(".error-text").show();
+            isValid = false;
+        }
+
+        if (!isValid) return false;
 
         var $form16Detail = $("#form16");
         $form16Detail.find(".input-part").eq(0).find("p").text(address || "Not Provided");
         $form16Detail.show()
+        return true;
     }
     
     function updatePhoneNumber() {
+        let isValid = true;
         var phoneNumber = $("#Phone-number").val().trim();
 
+        if (!phoneNumber || !/^\d{7,}$/.test(phoneNumber)) {
+            $("#Phone-number").siblings(".error-text").show();
+            isValid = false;
+        }
+
+        if (!isValid) return false;
         var $form17Detail = $("#form17");
         $form17Detail.find(".input-part").eq(0).find("p").text(phoneNumber || "Not Provided");
-        $form17Detail.show()
+        $form17Detail.show();
+        return true;
     }
 
     
