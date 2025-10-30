@@ -1,6 +1,7 @@
 $(document).ready(function() {
     let currentTab = 0;
     const forms = $(".form-Container");
+    const apiPoint = "https://10.199.11.70/forms"
     
     
     $(".form-Container").hide();
@@ -592,7 +593,7 @@ $(".continueButton").on("click", function(e) {
 
         // Send via AJAX
         $.ajax({
-            url: "https://localhost:3000/forms", 
+            url: apiPoint, 
             method: "POST",
             contentType: "application/json",
             data: JSON.stringify(formData),
